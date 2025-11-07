@@ -16,8 +16,8 @@ export default function Home() {
       <main className="flex-1">
         <Hero />
         <div className="space-y-16 sm:space-y-24">
-            <PracticeAreas />
             <FirmHistory />
+            <PracticeAreas />
             <Stats />
             <AttorneyProfiles />
             <Partners />
