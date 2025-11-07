@@ -1,10 +1,11 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, Scale } from 'lucide-react';
+import { Menu, Scale, Mail, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { cn } from '@/lib/utils';
 
 const navLinks = [
   { href: '/about', label: 'About Us'},
@@ -15,16 +16,64 @@ const navLinks = [
   { href: '/#contact', label: 'Contact Us' },
 ];
 
+function TopBar() {
+    return (
+        <div className="bg-secondary text-secondary-foreground">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex justify-between items-center h-12 text-sm">
+                    <div className="flex items-center gap-6">
+                        <a href="mailto:info@kanyij-advocates.co.ke" className="flex items-center gap-2 hover:text-accent transition-colors">
+                            <Mail className="h-4 w-4 text-accent"/>
+                            <span className="hidden sm:inline">info@kanyij-advocates.co.ke</span>
+                        </a>
+                         <a href="tel:0720988571" className="flex items-center gap-2 hover:text-accent transition-colors">
+                            <Phone className="h-4 w-4 text-accent"/>
+                            <span className="hidden sm:inline">0720988571 | 0735830584</span>
+                        </a>
+                    </div>
+                    <Button variant="outline" size="sm" asChild className="border-accent text-accent hover:bg-accent hover:text-accent-foreground">
+                        <Link href="/#contact">Get A Schedule</Link>
+                    </Button>
+                </div>
+            </div>
+        </div>
+    );
+}
+
 export default function Header() {
   const [isOpen, setIsOpen] = React.useState(false);
+  const [visible, setVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const handleScroll = () => {
+    if (window.scrollY > lastScrollY && window.scrollY > 200) {
+      // if scroll down hide the navbar
+      setVisible(false);
+    } else {
+      // if scroll up show the navbar
+      setVisible(true);
+    }
+    setLastScrollY(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollY]);
 
   return (
-    <header className="bg-background/80 text-foreground shadow-sm sticky top-0 z-50 backdrop-blur-sm">
+    <header className={cn(
+        "bg-background/80 text-foreground shadow-sm sticky top-0 z-50 backdrop-blur-sm transition-transform duration-300",
+        visible ? "translate-y-0" : "-translate-y-full"
+    )}>
+      <TopBar />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center gap-3">
             <Scale className="h-8 w-8 text-accent" />
-            <span className="text-lg md:text-xl font-headline font-bold whitespace-nowrap">Kanyi J. & Company Advocates</span>
+            <span className="text-lg md:text-xl font-headline font-bold whitespace-nowrap text-primary">Kanyi J. & Company Advocates</span>
           </Link>
 
           <nav className="hidden md:flex items-center space-x-6">
@@ -48,7 +97,7 @@ export default function Header() {
                   <div className="p-6 border-b">
                     <Link href="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
                        <Scale className="h-8 w-8 text-accent" />
-                       <span className="text-xl font-headline font-bold">Kanyi J. & Co.</span>
+                       <span className="text-xl font-headline font-bold text-primary">Kanyi J. & Co.</span>
                     </Link>
                   </div>
                   <nav className="flex flex-col p-6 space-y-4">
