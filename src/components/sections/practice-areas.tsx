@@ -55,13 +55,13 @@ export default function PracticeAreas() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {practiceAreas.map((area) => (
-            <Card key={area.title} className="text-center group hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+            <Card key={area.title} className="text-center group bg-secondary/50 border-0 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
               <CardHeader className="items-center p-6">
-                <div className="bg-primary text-primary-foreground rounded-full p-4 mb-4 group-hover:bg-accent group-hover:text-accent-foreground transition-colors duration-300">
+                <div className="bg-background text-accent rounded-full p-4 mb-4 ring-8 ring-secondary/30 group-hover:bg-accent group-hover:text-accent-foreground transition-colors duration-300">
                   <area.icon className="h-8 w-8" />
                 </div>
-                <CardTitle className="font-headline text-xl">{area.title}</CardTitle>
-                <CardDescription className="pt-2">{area.description}</CardDescription>
+                <CardTitle className="font-headline text-xl text-primary">{area.title}</CardTitle>
+                <CardDescription className="pt-2 text-muted-foreground">{area.description}</CardDescription>
               </CardHeader>
             </Card>
           ))}

@@ -32,7 +32,7 @@ const timelineEvents: TimelineEvent[] = [
 
 export default function FirmHistory() {
   return (
-    <section id="history" className="py-16 sm:py-24 bg-secondary">
+    <section id="history" className="py-16 sm:py-24 bg-secondary/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-headline font-bold tracking-tight text-primary">
@@ -45,9 +45,9 @@ export default function FirmHistory() {
         <div className="relative max-w-3xl mx-auto">
           <div className="absolute left-4 md:left-1/2 top-0 h-full w-0.5 bg-border -translate-x-1/2"></div>
           {timelineEvents.map((event, index) => (
-            <div key={index} className={`relative pl-12 md:pl-0 mb-12 md:flex ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+            <div key={index} className={`relative pl-12 md:pl-0 mb-12 md:flex items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
               <div className="md:w-1/2 md:px-6">
-                <Card className="shadow-md hover:shadow-xl transition-shadow">
+                <Card className="shadow-md hover:shadow-xl transition-shadow bg-background">
                   <CardHeader>
                     <div className="flex items-baseline justify-between">
                       <CardTitle className="font-headline text-xl text-primary">{event.title}</CardTitle>
@@ -60,7 +60,7 @@ export default function FirmHistory() {
                 </Card>
               </div>
               <div className="absolute left-4 top-1/2 -translate-y-1/2 -translate-x-1/2 md:left-1/2 z-10">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground ring-8 ring-secondary">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground ring-8 ring-secondary/50">
                   <Scale className="h-4 w-4" />
                 </div>
               </div>

@@ -47,22 +47,22 @@ export default function AttorneyProfiles() {
           {attorneys.map((attorney) => {
             const attorneyImage = PlaceHolderImages.find(p => p.id === attorney.imageId);
             return (
-              <Card key={attorney.name} className="overflow-hidden group text-center hover:shadow-xl transition-shadow">
+              <Card key={attorney.name} className="overflow-hidden group text-center border-0 bg-transparent shadow-none hover:shadow-xl transition-shadow rounded-lg">
                 <CardHeader className="p-0">
                   {attorneyImage && (
-                    <div className="aspect-square relative">
+                    <div className="aspect-[4/5] relative">
                       <Image
                         src={attorneyImage.imageUrl}
                         alt={`Portrait of ${attorney.name}`}
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        className="object-cover group-hover:scale-105 transition-transform duration-300 rounded-t-lg"
                         data-ai-hint={attorneyImage.imageHint}
                       />
                     </div>
                   )}
                 </CardHeader>
-                <CardContent className="p-6">
-                  <CardTitle className="font-headline text-xl">{attorney.name}</CardTitle>
+                <CardContent className="p-6 bg-secondary/30 rounded-b-lg">
+                  <CardTitle className="font-headline text-xl text-primary">{attorney.name}</CardTitle>
                   <CardDescription className="text-accent font-semibold">{attorney.title}</CardDescription>
                   <div className="mt-4 flex flex-wrap justify-center gap-2">
                     {attorney.specialties.map((spec) => (

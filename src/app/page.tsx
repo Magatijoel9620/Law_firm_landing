@@ -12,10 +12,12 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <Hero />
-        <PracticeAreas />
-        <FirmHistory />
-        <AttorneyProfiles />
-        <Contact />
+        <div className="space-y-16 sm:space-y-24">
+            <PracticeAreas />
+            <FirmHistory />
+            <AttorneyProfiles />
+            <Contact />
+        </div>
       </main>
       <Footer />
     </div>

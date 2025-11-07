@@ -3,7 +3,7 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-16 sm:py-24 bg-secondary">
+    <section id="contact" className="py-16 sm:py-24 bg-secondary/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-headline font-bold tracking-tight text-primary">
@@ -14,9 +14,9 @@ export default function Contact() {
           </p>
         </div>
         <div className="max-w-4xl mx-auto">
-          <Card>
-            <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-border">
-              <div className="p-8 flex flex-col items-center text-center">
+          <Card className="bg-background">
+            <div className="grid grid-cols-1 md:grid-cols-3">
+              <div className="p-8 flex flex-col items-center text-center border-b md:border-b-0 md:border-r">
                 <div className="bg-primary text-primary-foreground rounded-full p-4 mb-4">
                   <Mail className="h-8 w-8" />
                 </div>
@@ -29,7 +29,7 @@ export default function Contact() {
                   </a>
                 </CardContent>
               </div>
-              <div className="p-8 flex flex-col items-center text-center">
+              <div className="p-8 flex flex-col items-center text-center border-b md:border-b-0 md:border-r">
                 <div className="bg-primary text-primary-foreground rounded-full p-4 mb-4">
                   <Phone className="h-8 w-8" />
                 </div>
