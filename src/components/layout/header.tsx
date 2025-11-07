@@ -7,10 +7,11 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 const navLinks = [
-  { href: '#practice-areas', label: 'Practice Areas' },
-  { href: '#history', label: 'Our History' },
-  { href: '#attorneys', label: 'Our Team' },
-  { href: '#contact', label: 'Contact Us' },
+  { href: '/about', label: 'About Us'},
+  { href: '/#practice-areas', label: 'Practice Areas' },
+  { href: '/#history', label: 'Our History' },
+  { href: '/#attorneys', label: 'Our Team' },
+  { href: '/#contact', label: 'Contact Us' },
 ];
 
 export default function Header() {
