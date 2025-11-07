@@ -5,6 +5,7 @@ import FirmHistory from '@/components/sections/firm-history';
 import Footer from '@/components/layout/footer';
 import Header from '@/components/layout/header';
 import Hero from '@/components/sections/hero';
+import Partners from '@/components/sections/partners';
 import PracticeAreas from '@/components/sections/practice-areas';
 import Stats from '@/components/sections/stats';
 
@@ -19,6 +20,7 @@ export default function Home() {
             <FirmHistory />
             <Stats />
             <AttorneyProfiles />
+            <Partners />
             <Contact />
         </div>
       </main>
