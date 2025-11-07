@@ -6,6 +6,7 @@ import Footer from '@/components/layout/footer';
 import Header from '@/components/layout/header';
 import Hero from '@/components/sections/hero';
 import PracticeAreas from '@/components/sections/practice-areas';
+import Stats from '@/components/sections/stats';
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <div className="space-y-16 sm:space-y-24">
             <PracticeAreas />
             <FirmHistory />
+            <Stats />
             <AttorneyProfiles />
             <Contact />
         </div>

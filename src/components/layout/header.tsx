@@ -8,11 +8,15 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
-  { href: '/#practice-areas', label: 'Practice Areas' },
-  { href: '/#history', label: 'Our History' },
-  { href: '/#attorneys', label: 'Our Team' },
+  { href: '/', label: 'Home' },
+  { href: '/#history', label: 'About Us' },
+  { href: '/#practice-areas', label: 'Services' },
+  { href: '/#attorneys', label: 'Team' },
+  { href: '#', label: 'Portfolio' },
+  { href: 'https://www.cp.kjc.wakilicms.com/', label: 'Client Portal', external: true },
   { href: '/#contact', label: 'Contact Us' },
 ];
+
 
 function TopBar() {
     return (
@@ -44,11 +48,9 @@ export default function Header() {
   const [lastScrollY, setLastScrollY] = useState(0);
 
   const handleScroll = () => {
-    if (window.scrollY > lastScrollY && window.scrollY > 200) {
-      // if scroll down hide the navbar
+    if (window.scrollY > lastScrollY && window.scrollY > 50) {
       setVisible(false);
     } else {
-      // if scroll up show the navbar
       setVisible(true);
     }
     setLastScrollY(window.scrollY);
@@ -76,7 +78,13 @@ export default function Header() {
 
           <nav className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">
+              <Link
+                key={link.href}
+                href={link.href}
+                target={link.external ? '_blank' : '_self'}
+                rel={link.external ? 'noopener noreferrer' : ''}
+                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+              >
                 {link.label}
               </Link>
             ))}
@@ -100,7 +108,14 @@ export default function Header() {
                   </div>
                   <nav className="flex flex-col p-6 space-y-4">
                     {navLinks.map((link) => (
-                      <Link key={link.href} href={link.href} className="text-lg font-medium hover:text-accent transition-colors" onClick={() => setIsOpen(false)}>
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        target={link.external ? '_blank' : '_self'}
+                        rel={link.external ? 'noopener noreferrer' : ''}
+                        className="text-lg font-medium hover:text-accent transition-colors"
+                        onClick={() => setIsOpen(false)}
+                      >
                         {link.label}
                       </Link>
                     ))}

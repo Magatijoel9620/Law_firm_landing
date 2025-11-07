@@ -1,5 +1,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Scale } from "lucide-react";
+import { CheckSquare, Scale } from "lucide-react";
+import Image from "next/image";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 interface TimelineEvent {
   year: string;
@@ -30,10 +34,96 @@ const timelineEvents: TimelineEvent[] = [
   },
 ];
 
+const highlights = [
+    "100% Success Rate",
+    "Expert Legal Service",
+    "Highly Recommendation",
+    "Fast Support",
+    "High Court Performance",
+    "Quick Complete Case"
+];
+
+const whyChooseUs = [
+    {
+        title: "Long Experience",
+        description: "The firm has over the years earned its reputation as a first rate law firm of highly qualified and skilled lawyers, meeting the legal needs of our clients with experience, transparency and integrity."
+    },
+    {
+        title: "Our Success Cases",
+        description: "We are proud to have earned the respect of both our clients and adversaries."
+    },
+    {
+        title: "Professional Lawyers",
+        description: "The legal term comprises of highly and fully trained lawyers with a professional and versatile work experience from various legal assignments."
+    }
+]
+
 export default function FirmHistory() {
+  const teamImage = PlaceHolderImages.find(p => p.id === 'team-full');
+
   return (
-    <section id="history" className="py-16 sm:py-24 bg-secondary/50">
+    <section id="history" className="py-16 sm:py-24 bg-secondary/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* About Us Section */}
+        <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
+            <div className="about-image">
+                {teamImage && (
+                    <Image 
+                        src={teamImage.imageUrl} 
+                        alt={teamImage.description} 
+                        width={500} 
+                        height={400} 
+                        className="rounded-lg shadow-lg"
+                        data-ai-hint={teamImage.imageHint}
+                    />
+                )}
+            </div>
+            <div>
+                <h2 className="text-3xl sm:text-4xl font-headline font-bold tracking-tight text-primary">
+                    About Us
+                </h2>
+                <p className="mt-4 text-lg text-muted-foreground font-semibold">
+                    We Are Top Lawyers With Over 37 Years Of Experience
+                </p>
+                <p className="mt-4 text-muted-foreground">
+                    Kanyi J & Company Advocates is a top-tier Law firm based in Mombasa, Kenya. Founded in 1985 under the name of J. V. Juma & Company Advocates by Mr. J. V. Juma as the Sole Proprietor. Mr. J. V. Juma was later elevated to the High Court as a Puisne Judge and Mr. Joseph Karanja Kanyi who had then resigned from the Judiciary took over the firm and it was renamed Kanyi J. & Company Advocates in 1996.
+                </p>
+                <div className="grid grid-cols-2 gap-4 mt-6 text-sm">
+                    {highlights.map(item => (
+                        <div key={item} className="flex items-center gap-2">
+                            <CheckSquare className="h-5 w-5 text-accent" />
+                            <span>{item}</span>
+                        </div>
+                    ))}
+                </div>
+                 <Button asChild size="lg" className="mt-8 bg-accent text-accent-foreground hover:bg-accent/90">
+                    <Link href="#contact">Learn More</Link>
+                </Button>
+            </div>
+        </div>
+
+        {/* Why Choose us */}
+         <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-headline font-bold tracking-tight text-primary">
+                Why Choose Us
+            </h2>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+            {whyChooseUs.map(item => (
+                <Card key={item.title} className="bg-background/70 text-center p-6">
+                    <CardHeader>
+                        <CardTitle className="font-headline text-xl text-primary">{item.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <p className="text-muted-foreground">{item.description}</p>
+                    </CardContent>
+                </Card>
+            ))}
+        </div>
+
+
+        {/* Timeline Section */}
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-headline font-bold tracking-tight text-primary">
             Our Legacy
@@ -60,7 +150,7 @@ export default function FirmHistory() {
                 </Card>
               </div>
               <div className="absolute left-4 top-1/2 -translate-y-1/2 -translate-x-1/2 md:left-1/2 z-10">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground ring-8 ring-secondary/50">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground ring-8 ring-secondary/30">
                   <Scale className="h-4 w-4" />
                 </div>
               </div>
@@ -68,6 +158,7 @@ export default function FirmHistory() {
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
