@@ -58,7 +58,7 @@ const practiceAreas: PracticeArea[] = [
 
 export default function PracticeAreas() {
   return (
-    <section id="practice-areas" className="py-16 sm:py-24 bg-background">
+    <section id="practice-areas" className="py-16 sm:py-24 bg-secondary/50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-headline font-bold tracking-tight text-primary">
@@ -70,9 +70,9 @@ export default function PracticeAreas() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {practiceAreas.map((area) => (
-            <Card key={area.title} className="text-center group bg-secondary/30 border-0 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+            <Card key={area.title} className="text-center group bg-background border-0 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
               <CardHeader className="items-center p-6">
-                <div className="bg-background text-accent rounded-full p-4 mb-4 ring-8 ring-secondary/50 group-hover:bg-accent group-hover:text-accent-foreground transition-colors duration-300">
+                <div className="bg-secondary text-accent rounded-full p-4 mb-4 ring-8 ring-secondary/50 group-hover:bg-accent group-hover:text-accent-foreground transition-colors duration-300">
                   <area.icon className="h-8 w-8" />
                 </div>
                 <CardTitle className="font-headline text-xl text-primary">{area.title}</CardTitle>

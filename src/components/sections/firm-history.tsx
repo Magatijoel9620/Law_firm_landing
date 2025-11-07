@@ -62,7 +62,7 @@ export default function FirmHistory() {
   const teamImage = PlaceHolderImages.find(p => p.id === 'team-full');
 
   return (
-    <section id="history" className="py-16 sm:py-24 bg-secondary/30">
+    <section id="history" className="py-16 sm:py-24 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* About Us Section */}
@@ -111,7 +111,7 @@ export default function FirmHistory() {
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
             {whyChooseUs.map(item => (
-                <Card key={item.title} className="bg-background/70 text-center p-6">
+                <Card key={item.title} className="bg-secondary/30 text-center p-6">
                     <CardHeader>
                         <CardTitle className="font-headline text-xl text-primary">{item.title}</CardTitle>
                     </CardHeader>
@@ -137,7 +137,7 @@ export default function FirmHistory() {
           {timelineEvents.map((event, index) => (
             <div key={index} className={`relative pl-12 md:pl-0 mb-12 md:flex items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
               <div className="md:w-1/2 md:px-6">
-                <Card className="shadow-md hover:shadow-xl transition-shadow bg-background">
+                <Card className="shadow-md hover:shadow-xl transition-shadow bg-secondary/30">
                   <CardHeader>
                     <div className="flex items-baseline justify-between">
                       <CardTitle className="font-headline text-xl text-primary">{event.title}</CardTitle>
@@ -150,7 +150,7 @@ export default function FirmHistory() {
                 </Card>
               </div>
               <div className="absolute left-4 top-1/2 -translate-y-1/2 -translate-x-1/2 md:left-1/2 z-10">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground ring-8 ring-secondary/30">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-primary-foreground ring-8 ring-background">
                   <Scale className="h-4 w-4" />
                 </div>
               </div>
