@@ -7,27 +7,39 @@ interface Attorney {
   name: string;
   title: string;
   imageId: string;
-  specialties: string[];
+  description: string;
 }
 
 const attorneys: Attorney[] = [
   {
-    name: "Joseph Karanja Kanyi",
-    title: "Managing Partner",
+    name: "J.K Kanyi",
+    title: "Founding Member",
     imageId: "attorney-1",
-    specialties: ["Corporate Law", "Conveyancing", "Litigation"],
+    description: "J.K Kanyi is the Founding Member of Kanyi J & Company Advocates.",
   },
   {
-    name: "Jane Mwangi",
-    title: "Senior Associate",
+    name: "C. Mango",
+    title: "Lawyer",
     imageId: "attorney-2",
-    specialties: ["Maritime Law", "Dispute Resolution", "Commercial Law"],
+    description: "Madam Mango is a Lawyer at Kanyi J & Company Advocates.",
   },
   {
-    name: "David Ochieng",
-    title: "Associate",
+    name: "M.K Maundu",
+    title: "Lawyer",
     imageId: "attorney-3",
-    specialties: ["Family Law", "Real Estate", "Succession"],
+    description: "Mr. Maundu is a Lawyer at Kanyi J & Company Advocates.",
+  },
+  {
+    name: "J. Adoyo",
+    title: "Lawyer",
+    imageId: "attorney-4",
+    description: "J. Adoyo is a Lawyer at Kanyi J & Company Advocates.",
+  },
+    {
+    name: "W.N Achoka",
+    title: "Lawyer",
+    imageId: "attorney-5",
+    description: "Mr. Achoka is a Lawyer at Kanyi J & Company Advocates.",
   },
 ];
 
@@ -40,7 +52,7 @@ export default function AttorneyProfiles() {
             Meet Our Team
           </h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-            Our distinguished team of advocates brings a wealth of experience and a commitment to achieving the best outcomes for our clients.
+            “Professional And Dedicated to Help You Win”
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -64,11 +76,7 @@ export default function AttorneyProfiles() {
                 <CardContent className="p-6 bg-secondary/30 rounded-b-lg">
                   <CardTitle className="font-headline text-xl text-primary">{attorney.name}</CardTitle>
                   <CardDescription className="text-accent font-semibold">{attorney.title}</CardDescription>
-                  <div className="mt-4 flex flex-wrap justify-center gap-2">
-                    {attorney.specialties.map((spec) => (
-                      <Badge key={spec} variant="secondary">{spec}</Badge>
-                    ))}
-                  </div>
+                  <p className="mt-4 text-sm text-muted-foreground">{attorney.description}</p>
                 </CardContent>
               </Card>
             );
