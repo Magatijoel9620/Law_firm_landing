@@ -49,7 +49,7 @@ export default function Footer() {
             <h3 className="text-lg font-headline font-semibold text-accent mb-4">Quick Links</h3>
             <ul className="space-y-2">
               {quickLinks.map(link => (
-                 <li key={link.href}><Link href={link.href} className="hover:text-accent transition-colors">{link.label}</Link></li>
+                 <li key={link.label}><Link href={link.href} className="hover:text-accent transition-colors">{link.label}</Link></li>
               ))}
             </ul>
           </div>
@@ -58,7 +58,7 @@ export default function Footer() {
             <h3 className="text-lg font-headline font-semibold text-accent mb-4">Services</h3>
             <ul className="space-y-2">
               {serviceLinks.map(link => (
-                 <li key={link.href}><Link href={link.href} className="hover:text-accent transition-colors">{link.label}</Link></li>
+                 <li key={link.label}><Link href={link.href} className="hover:text-accent transition-colors">{link.label}</Link></li>
               ))}
             </ul>
           </div>
