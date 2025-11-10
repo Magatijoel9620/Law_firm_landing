@@ -39,7 +39,7 @@ export default function Hero() {
         }}
       >
         <motion.h1 
-          className="text-4xl md:text-6xl font-headline font-bold tracking-tight mb-4 drop-shadow-lg"
+          className="text-4xl md:text-6xl lg:text-7xl font-headline font-bold tracking-tight mb-4 drop-shadow-lg"
           variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 }}}}
         >
           Kanyi J. & Company Advocates
