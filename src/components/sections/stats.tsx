@@ -4,7 +4,7 @@ const stats = [
   { value: "5,600+", label: "Solved Cases", icon: ShieldCheck },
   { value: "4,000+", label: "Cases Won", icon: Gavel },
   { value: "10+", label: "Awards Won", icon: Trophy },
-  { value: "Top 10", label: "Law Firm Ranking", icon: Scale },
+  { value: "25+", label: "Years in Practice", icon: Award },
 ];
 
 export default function Stats() {
