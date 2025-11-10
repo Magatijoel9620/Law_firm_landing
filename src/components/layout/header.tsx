@@ -6,6 +6,7 @@ import { Menu, Scale, Mail, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
+import { ThemeToggle } from '../theme-toggle';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -33,9 +34,12 @@ function TopBar() {
                             <span className="hidden sm:inline">0720988571 | 0735830584</span>
                         </a>
                     </div>
-                    <Button variant="outline" size="sm" asChild className="border-accent text-accent hover:bg-accent hover:text-accent-foreground">
-                        <Link href="/#contact">Get A Schedule</Link>
-                    </Button>
+                    <div className="flex items-center gap-2">
+                        <Button variant="outline" size="sm" asChild className="border-accent text-accent hover:bg-accent hover:text-accent-foreground">
+                            <Link href="/#contact">Get A Schedule</Link>
+                        </Button>
+                        <ThemeToggle />
+                    </div>
                 </div>
             </div>
         </div>
@@ -120,6 +124,9 @@ export default function Header() {
                       </Link>
                     ))}
                   </nav>
+                  <div className="mt-auto p-6 flex justify-center">
+                    <ThemeToggle />
+                  </div>
                 </div>
               </SheetContent>
             </Sheet>
