@@ -1,9 +1,9 @@
-import { Trophy, ShieldCheck, Scale, Award } from 'lucide-react';
+import { Trophy, ShieldCheck, Scale, Award, Gavel } from 'lucide-react';
 
 const stats = [
   { value: "5,600+", label: "Solved Cases", icon: ShieldCheck },
-  { value: "4,000+", label: "Cases Won", icon: Trophy },
-  { value: "10+", label: "Awards Won", icon: Award },
+  { value: "4,000+", label: "Cases Won", icon: Gavel },
+  { value: "10+", label: "Awards Won", icon: Trophy },
   { value: "Top 10", label: "Law Firm Ranking", icon: Scale },
 ];
 
