@@ -1,17 +1,17 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
-import { DM_Serif_Display, Inter } from 'next/font/google';
+import { Alegreya, PT_Sans } from 'next/font/google';
 
-const inter = Inter({
+const alegreya = Alegreya({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-alegreya',
 });
 
-const dmSerifDisplay = DM_Serif_Display({
+const ptSans = PT_Sans({
   subsets: ['latin'],
-  weight: ['400'],
-  variable: '--font-dm-serif-display',
+  weight: ['400', '700'],
+  variable: '--font-pt-sans',
 });
 
 export const metadata: Metadata = {
@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${dmSerifDisplay.variable} scroll-smooth`}>
+    <html lang="en" className={`${alegreya.variable} ${ptSans.variable} scroll-smooth`}>
       <body className="font-body antialiased">
         {children}
         <Toaster />

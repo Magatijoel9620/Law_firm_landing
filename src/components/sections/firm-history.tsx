@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { CheckSquare, Scale } from "lucide-react";
+import { CheckSquare, Scale, Briefcase, Award, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Button } from "../ui/button";
@@ -45,14 +45,17 @@ const highlights = [
 
 const whyChooseUs = [
     {
+        icon: Briefcase,
         title: "Long Experience",
         description: "The firm has over the years earned its reputation as a first rate law firm of highly qualified and skilled lawyers, meeting the legal needs of our clients with experience, transparency and integrity."
     },
     {
+        icon: Award,
         title: "Our Success Cases",
         description: "We are proud to have earned the respect of both our clients and adversaries."
     },
     {
+        icon: ShieldCheck,
         title: "Professional Lawyers",
         description: "The legal term comprises of highly and fully trained lawyers with a professional and versatile work experience from various legal assignments."
     }
@@ -69,14 +72,15 @@ export default function FirmHistory() {
         <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
             <div className="about-image">
                 {teamImage && (
-                    <Image 
-                        src={teamImage.imageUrl} 
-                        alt={teamImage.description} 
-                        width={500} 
-                        height={400} 
-                        className="rounded-lg shadow-lg"
-                        data-ai-hint={teamImage.imageHint}
-                    />
+                    <div className="relative aspect-[5/4] rounded-lg shadow-lg overflow-hidden">
+                        <Image 
+                            src={teamImage.imageUrl} 
+                            alt={teamImage.description} 
+                            fill
+                            className="object-cover"
+                            data-ai-hint={teamImage.imageHint}
+                        />
+                    </div>
                 )}
             </div>
             <div>
@@ -111,12 +115,15 @@ export default function FirmHistory() {
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
             {whyChooseUs.map(item => (
-                <Card key={item.title} className="bg-secondary/30 text-center p-6">
-                    <CardHeader>
+                 <Card key={item.title} className="bg-card text-center p-6 border transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+                    <CardHeader className="items-center">
+                        <div className="bg-secondary text-accent rounded-full p-3 mb-4 ring-8 ring-secondary/50">
+                            <item.icon className="h-6 w-6" />
+                        </div>
                         <CardTitle className="font-headline text-xl text-primary">{item.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <p className="text-muted-foreground">{item.description}</p>
+                        <p className="text-muted-foreground text-sm">{item.description}</p>
                     </CardContent>
                 </Card>
             ))}
@@ -137,7 +144,7 @@ export default function FirmHistory() {
           {timelineEvents.map((event, index) => (
             <div key={index} className={`relative pl-12 md:pl-0 mb-12 md:flex items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
               <div className="md:w-1/2 md:px-6">
-                <Card className="shadow-md hover:shadow-xl transition-shadow bg-secondary/30">
+                <Card className="shadow-md hover:shadow-xl transition-shadow bg-card">
                   <CardHeader>
                     <div className="flex items-baseline justify-between">
                       <CardTitle className="font-headline text-xl text-primary">{event.title}</CardTitle>
@@ -145,7 +152,7 @@ export default function FirmHistory() {
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground">{event.description}</p>
+                    <p className="text-muted-foreground text-sm">{event.description}</p>
                   </CardContent>
                 </Card>
               </div>
