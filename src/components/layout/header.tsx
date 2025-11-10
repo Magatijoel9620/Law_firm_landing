@@ -20,15 +20,15 @@ const navLinks = [
 
 function TopBar() {
     return (
-        <div className="bg-secondary text-secondary-foreground">
+        <div className="bg-primary text-primary-foreground">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-12 text-sm">
                     <div className="flex items-center gap-6">
-                        <a href="mailto:info@kanyij-advocates.co.ke" className="flex items-center gap-2 hover:text-accent transition-colors">
+                        <a href="mailto:info@kanyij-advocates.co.ke" className="flex items-center gap-2 text-primary-foreground/80 hover:text-accent transition-colors">
                             <Mail className="h-4 w-4 text-accent"/>
                             <span className="hidden sm:inline">info@kanyij-advocates.co.ke</span>
                         </a>
-                         <a href="tel:0720988571" className="flex items-center gap-2 hover:text-accent transition-colors">
+                         <a href="tel:0720988571" className="flex items-center gap-2 text-primary-foreground/80 hover:text-accent transition-colors">
                             <Phone className="h-4 w-4 text-accent"/>
                             <span className="hidden sm:inline">0720988571 | 0735830584</span>
                         </a>
