@@ -48,60 +48,41 @@ export default function Contact() {
             Contact Us
           </h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-            We are here to help. Reach out to us for a consultation or any inquiries.
+            “Please Contact Us So We Can Help You”
           </p>
         </div>
         <div className="grid lg:grid-cols-2 gap-12 items-start">
             <div className="space-y-8">
-              <Card className="bg-background">
-                <div className="p-8 flex items-center gap-6">
-                  <div className="bg-primary text-primary-foreground rounded-full p-4">
-                    <Mail className="h-8 w-8" />
-                  </div>
-                  <div>
-                    <CardHeader className="p-0 mb-1">
-                      <CardTitle className="font-headline text-lg">Email</CardTitle>
-                    </CardHeader>
-                    <CardContent className="p-0">
-                      <a href="mailto:info@kanyij-advocates.co.ke" className="text-muted-foreground hover:text-accent transition-colors">
-                        info@kanyij-advocates.co.ke
-                      </a>
-                    </CardContent>
-                  </div>
+                <div>
+                    <h3 className="text-2xl font-headline font-semibold text-primary mb-2">Contact Us</h3>
+                    <p className="text-muted-foreground mb-6">For any legal query or matter, Feel free to reach us.</p>
+                    <ul className="space-y-4 text-muted-foreground">
+                        <li className="flex items-center gap-4">
+                            <Phone className="h-6 w-6 text-accent" />
+                            <a href="tel:+2540720988571" className="hover:text-accent">Tel : +254 0720 988571</a>
+                        </li>
+                        <li className="flex items-center gap-4">
+                            <Mail className="h-6 w-6 text-accent" />
+                            <a href="mailto:info@kanyij-advocates.co.ke" className="hover:text-accent">info@kanyij-advocates.co.ke</a>
+                        </li>
+                        <li className="flex items-start gap-4">
+                            <MapPin className="h-6 w-6 text-accent mt-1" />
+                            <span>Zakay Plaza, 2nd Floor, Kizingo Shopping Centre, Taher Sheikh Said Road, Mombasa.</span>
+                        </li>
+                    </ul>
                 </div>
-              </Card>
-              <Card className="bg-background">
-                <div className="p-8 flex items-center gap-6">
-                  <div className="bg-primary text-primary-foreground rounded-full p-4">
-                    <Phone className="h-8 w-8" />
-                  </div>
-                   <div>
-                    <CardHeader className="p-0 mb-1">
-                      <CardTitle className="font-headline text-lg">Phone</CardTitle>
-                    </CardHeader>
-                    <CardContent className="p-0">
-                       <a href="tel:0720988571" className="text-muted-foreground hover:text-accent transition-colors">
-                        +254 0720 988571
-                       </a>
-                    </CardContent>
-                  </div>
+                <div className="w-full h-80 rounded-lg overflow-hidden shadow-lg">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.824240726839!2d39.6648050749752!3d-4.062095995958567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x184013175f7a7d49%3A0x88981f6233481235!2sZakay%20Plaza!5e0!3m2!1sen!2ske!4v1705663369408!5m2!1sen!2ske"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen={false}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Office Location"
+                ></iframe>
                 </div>
-              </Card>
-              <Card className="bg-background">
-                 <div className="p-8 flex items-center gap-6">
-                  <div className="bg-primary text-primary-foreground rounded-full p-4">
-                    <MapPin className="h-8 w-8" />
-                  </div>
-                   <div>
-                    <CardHeader className="p-0 mb-1">
-                      <CardTitle className="font-headline text-lg">Office</CardTitle>
-                    </CardHeader>
-                    <CardContent className="p-0">
-                      <p className="text-muted-foreground">Zakay Plaza, 2nd Floor, Kizingo Shopping Centre, Mombasa.</p>
-                    </CardContent>
-                  </div>
-                </div>
-              </Card>
             </div>
             <div>
               <Card className="bg-background p-8">
