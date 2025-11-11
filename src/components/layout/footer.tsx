@@ -91,7 +91,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-primary-foreground/20 text-center text-sm text-primary-foreground/60">
-          <p>&copy; {currentYear} Kanyi J. & Company Advocates. All Rights Reserved. Designed by <a href="https://wapigroup.co.ke/" target="_blank" rel="noopener noreferrer" className="hover:text-accent">Wapi Group</a></p>
+          <p>&copy; {currentYear} Kanyi J. & Company Advocates. All Rights Reserved. Designed by Hempon Group</p>
         </div>
       </div>
     </footer>
