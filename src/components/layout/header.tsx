@@ -14,7 +14,7 @@ const navLinks = [
   { href: '/#practice-areas', label: 'Services' },
   { href: '/#attorneys', label: 'Team' },
   { href: '#', label: 'Portfolio' },
-  { href: 'https://www.cp.kjc.wakilicms.com/', label: 'Client Portal', external: true },
+  { href: 'https://law-portal-chi.vercel.app/', label: 'Portal', external: true },
   { href: '/#contact', label: 'Contact Us' },
 ];
 
