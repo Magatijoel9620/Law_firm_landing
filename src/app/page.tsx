@@ -1,3 +1,4 @@
+
 'use client';
 
 import dynamic from 'next/dynamic';
@@ -28,6 +29,7 @@ const Contact = dynamic(() => import('@/components/sections/contact'), {
 
 import Footer from '@/components/layout/footer';
 import Header from '@/components/layout/header';
+import BackToTopButton from '@/components/layout/back-to-top-button';
 
 export default function Home() {
   return (
@@ -57,6 +59,7 @@ export default function Home() {
         </div>
       </main>
       <Footer />
+      <BackToTopButton />
     </div>
   );
 }
