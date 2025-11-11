@@ -8,7 +8,6 @@ const quickLinks = [
   { href: '/#practice-areas', label: 'Our Services' },
   { href: '/#history', label: 'About Us' },
   { href: '/#attorneys', label: 'Team' },
-  { href: '#', label: 'Portfolio' },
   { href: '/#contact', label: 'Contact Us' },
 ];
 

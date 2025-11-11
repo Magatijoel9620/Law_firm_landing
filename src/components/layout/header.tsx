@@ -13,7 +13,6 @@ const navLinks = [
   { href: '/#history', label: 'About Us' },
   { href: '/#practice-areas', label: 'Services' },
   { href: '/#attorneys', label: 'Team' },
-  { href: '#', label: 'Portfolio' },
   { href: 'https://law-portal-chi.vercel.app/', label: 'Portal', external: true },
   { href: '/#contact', label: 'Contact Us' },
 ];
