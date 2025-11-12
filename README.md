@@ -72,6 +72,3 @@ The project follows the standard Next.js App Router structure:
 └── ...
 ```
 
-## 🌐 Deployment
-
-This application is configured for easy deployment on **Firebase App Hosting**. The `apphosting.yaml` file contains the necessary configuration. To deploy, connect your repository to a Firebase App Hosting backend.
