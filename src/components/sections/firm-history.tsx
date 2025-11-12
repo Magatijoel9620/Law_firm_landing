@@ -1,7 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { CheckSquare, Scale, Briefcase, Award, ShieldCheck } from "lucide-react";
 import Image from "next/image";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Button } from "../ui/button";
 import Link from "next/link";
 
@@ -62,8 +61,6 @@ const whyChooseUs = [
 ]
 
 export default function FirmHistory() {
-  const teamImage = PlaceHolderImages.find(p => p.id === 'team-full');
-
   return (
     <section id="history" className="py-16 sm:py-24 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -71,17 +68,14 @@ export default function FirmHistory() {
         {/* About Us Section */}
         <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
             <div className="about-image">
-                {teamImage && (
-                    <div className="relative aspect-[5/4] rounded-lg shadow-lg overflow-hidden">
-                        <Image 
-                            src={teamImage.imageUrl} 
-                            alt={teamImage.description} 
-                            fill
-                            className="object-cover"
-                            data-ai-hint={teamImage.imageHint}
-                        />
-                    </div>
-                )}
+                <div className="relative aspect-[5/4] rounded-lg shadow-lg overflow-hidden">
+                    <Image 
+                        src="/images/team/team.jpg" 
+                        alt="The team at Kanyi J. & Company Advocates" 
+                        fill
+                        className="object-cover"
+                    />
+                </div>
             </div>
             <div>
                 <h2 className="text-3xl sm:text-4xl font-headline font-bold tracking-tight text-primary">

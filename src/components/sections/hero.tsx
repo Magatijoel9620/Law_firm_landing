@@ -1,27 +1,21 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Badge } from '../ui/badge';
 import { motion } from 'framer-motion';
 
 export default function Hero() {
-  const heroImage = PlaceHolderImages.find(p => p.id === 'hero-bg');
-
   return (
     <section className="relative h-[60vh] sm:h-[70vh] md:h-[90vh] flex items-center justify-center text-center overflow-hidden">
-      {heroImage && (
-         <motion.div initial={{ scale: 1.1 }} animate={{ scale: 1 }} transition={{ duration: 10, ease: "linear", repeat: Infinity, repeatType: "mirror" }} className="absolute inset-0">
-            <Image
-                src={heroImage.imageUrl}
-                alt={heroImage.description}
-                fill
-                className="object-cover"
-                priority
-                data-ai-hint={heroImage.imageHint}
-            />
-        </motion.div>
-      )}
+      <motion.div initial={{ scale: 1.1 }} animate={{ scale: 1 }} transition={{ duration: 10, ease: "linear", repeat: Infinity, repeatType: "mirror" }} className="absolute inset-0">
+        <Image
+            src="/images/team/teamfull.jpg"
+            alt="Team of Kanyi J. & Company Advocates"
+            fill
+            className="object-cover"
+            priority
+        />
+      </motion.div>
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-black/30"></div>
       <motion.div 
         className="relative z-10 px-4 text-white max-w-4xl mx-auto"
@@ -39,7 +33,7 @@ export default function Hero() {
         }}
       >
         <motion.h1 
-          className="text-4xl md:text-6xl lg:text-7xl font-headline font-bold tracking-tight mb-4 drop-shadow-lg"
+          className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-headline font-bold tracking-tight mb-4 drop-shadow-lg"
           variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5 }}}}
         >
           Kanyi J. & Company Advocates

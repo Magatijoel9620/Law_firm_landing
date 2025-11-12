@@ -2,11 +2,12 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, Scale, Mail, Phone } from 'lucide-react';
+import { Menu, Mail, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import { ThemeToggle } from '../theme-toggle';
+import Image from 'next/image';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -75,7 +76,7 @@ export default function Header() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center gap-3">
-            <Scale className="h-8 w-8 text-accent" />
+            <Image src="/images/kanyilogo.png" alt="Kanyi J. & Company Advocates Logo" width={50} height={50} className="h-10 w-10 md:h-12 md:w-12" />
             <span className="text-lg md:text-xl font-headline font-bold whitespace-nowrap text-primary">Kanyi J. & Company Advocates</span>
           </Link>
 
@@ -105,7 +106,7 @@ export default function Header() {
                 <div className="flex flex-col h-full">
                   <div className="p-6 border-b">
                     <Link href="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
-                       <Scale className="h-8 w-8 text-accent" />
+                       <Image src="/images/kanyilogo.png" alt="Kanyi J. & Company Advocates Logo" width={40} height={40} />
                        <span className="text-xl font-headline font-bold text-primary">Kanyi J. & Co.</span>
                     </Link>
                   </div>

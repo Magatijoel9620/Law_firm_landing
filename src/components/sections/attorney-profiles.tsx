@@ -1,12 +1,10 @@
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 interface Attorney {
   name: string;
   title: string;
-  imageId: string;
+  imageSrc: string;
   description: string;
 }
 
@@ -14,31 +12,31 @@ const attorneys: Attorney[] = [
   {
     name: "J.K Kanyi",
     title: "Founding Member",
-    imageId: "attorney-1",
+    imageSrc: "/images/team/kanyi.jpg",
     description: "J.K Kanyi is the Founding Member of Kanyi J & Company Advocates.",
   },
   {
     name: "C. Mango",
     title: "Lawyer",
-    imageId: "attorney-2",
+    imageSrc: "/images/team/mango.jpg",
     description: "Madam Mango is a Lawyer at Kanyi J & Company Advocates.",
   },
   {
     name: "M.K Maundu",
     title: "Lawyer",
-    imageId: "attorney-3",
+    imageSrc: "/images/team/maundu.jpg",
     description: "Mr. Maundu is a Lawyer at Kanyi J & Company Advocates.",
   },
   {
     name: "J. Adoyo",
     title: "Lawyer",
-    imageId: "attorney-4",
+    imageSrc: "/images/team/adoyo.jpg",
     description: "J. Adoyo is a Lawyer at Kanyi J & Company Advocates.",
   },
-    {
+  {
     name: "W.N Achoka",
     title: "Lawyer",
-    imageId: "attorney-5",
+    imageSrc: "/images/team/achoka.jpg",
     description: "Mr. Achoka is a Lawyer at Kanyi J & Company Advocates.",
   },
 ];
@@ -56,31 +54,25 @@ export default function AttorneyProfiles() {
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {attorneys.map((attorney) => {
-            const attorneyImage = PlaceHolderImages.find(p => p.id === attorney.imageId);
-            return (
-              <Card key={attorney.name} className="overflow-hidden group text-center border-0 bg-transparent shadow-none hover:shadow-xl transition-shadow duration-300 rounded-lg">
-                <CardHeader className="p-0">
-                  {attorneyImage && (
-                    <div className="aspect-[4/5] relative">
-                      <Image
-                        src={attorneyImage.imageUrl}
-                        alt={`Portrait of ${attorney.name}`}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300 rounded-t-lg"
-                        data-ai-hint={attorneyImage.imageHint}
-                      />
-                    </div>
-                  )}
-                </CardHeader>
-                <CardContent className="p-6 bg-card rounded-b-lg">
-                  <CardTitle className="font-headline text-xl text-primary">{attorney.name}</CardTitle>
-                  <CardDescription className="text-accent font-semibold">{attorney.title}</CardDescription>
-                  <p className="mt-4 text-sm text-muted-foreground">{attorney.description}</p>
-                </CardContent>
-              </Card>
-            );
-          })}
+          {attorneys.map((attorney) => (
+            <Card key={attorney.name} className="overflow-hidden group text-center border-0 bg-transparent shadow-none hover:shadow-xl transition-shadow duration-300 rounded-lg">
+              <CardHeader className="p-0">
+                <div className="aspect-[4/5] relative">
+                  <Image
+                    src={attorney.imageSrc}
+                    alt={`Portrait of ${attorney.name}`}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300 rounded-t-lg"
+                  />
+                </div>
+              </CardHeader>
+              <CardContent className="p-6 bg-card rounded-b-lg">
+                <CardTitle className="font-headline text-xl text-primary">{attorney.name}</CardTitle>
+                <CardDescription className="text-accent font-semibold">{attorney.title}</CardDescription>
+                <p className="mt-4 text-sm text-muted-foreground">{attorney.description}</p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </section>

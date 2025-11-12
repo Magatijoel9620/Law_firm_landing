@@ -1,48 +1,6 @@
 {
   "placeholderImages": [
     {
-      "id": "hero-bg",
-      "description": "Background image for the hero section, showing a courthouse building.",
-      "imageUrl": "https://images.unsplash.com/photo-1623735203059-8e7a628ddb5c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjb3VydGhvdXNlJTIwYnVpbGRpbmd8ZW58MHx8fHwxNzYyNDkxNjM0fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "courthouse building"
-    },
-    {
-      "id": "attorney-1",
-      "description": "Headshot of an attorney.",
-      "imageUrl": "https://images.unsplash.com/photo-1589307904488-7d60ff29c975?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhdHRvcm5leSUyMGhlYWRzaG90fGVufDB8fHx8MTc2Mjc3NjU3Nnww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "attorney headshot"
-    },
-    {
-      "id": "attorney-2",
-      "description": "Headshot of an attorney.",
-      "imageUrl": "https://images.unsplash.com/photo-1736939678218-bd648b5ef3bb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxsYXd5ZXIlMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjI3NDQ3MzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "lawyer portrait"
-    },
-    {
-      "id": "attorney-3",
-      "description": "Headshot of an attorney.",
-      "imageUrl": "https://images.unsplash.com/photo-1701096374092-bb70915fdc5c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxwcm9mZXNzaW9uYWwlMjBoZWFkc2hvdHxlbnwwfHx8fDE3NjI3MDQ4MjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "professional headshot"
-    },
-    {
-      "id": "attorney-4",
-      "description": "Headshot of an attorney.",
-      "imageUrl": "https://images.unsplash.com/photo-1577720643180-97cd599e79f9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxsYXd5ZXIlMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjI3NDQ3MzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "lawyer portrait"
-    },
-    {
-      "id": "attorney-5",
-      "description": "Headshot of an attorney.",
-      "imageUrl": "https://images.unsplash.com/photo-1560250097-0b93528c311a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBoZWFkc2hvdHxlbnwwfHx8fDE3NjI3MDQ4MjN8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "professional headshot"
-    },
-    {
-      "id": "team-full",
-      "description": "Full team of lawyers in an office.",
-      "imageUrl": "https://images.unsplash.com/photo-1559510881-58b92ab35929?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxsYXd5ZXJzJTIwb2ZmaWNlfGVufDB8fHx8MTc2MjUwMTU0OHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "lawyers office"
-    },
-    {
       "id": "partner-1",
       "description": "Corrugated partner logo",
       "imageUrl": "https://images.unsplash.com/photo-1622465911368-72162f8da3e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjb21wYW55JTIwbG9nb3xlbnwwfHx8fDE3NjI0NjU4Njl8MA&ixlib=rb-4.1.0&q=80&w=1080",
