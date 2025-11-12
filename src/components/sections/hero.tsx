@@ -9,7 +9,7 @@ export default function Hero() {
     <section className="relative h-[60vh] sm:h-[70vh] md:h-[90vh] flex items-center justify-center text-center overflow-hidden">
       <motion.div initial={{ scale: 1.1 }} animate={{ scale: 1 }} transition={{ duration: 10, ease: "linear", repeat: Infinity, repeatType: "mirror" }} className="absolute inset-0">
         <Image
-            src="/images/team/teamfull.jpg"
+            src="/images/team/team.jpg"
             alt="Team of Kanyi J. & Company Advocates"
             fill
             className="object-cover"

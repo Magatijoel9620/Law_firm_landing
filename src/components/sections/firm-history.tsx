@@ -70,9 +70,10 @@ export default function FirmHistory() {
             <div className="about-image">
                 <div className="relative aspect-[5/4] rounded-lg shadow-lg overflow-hidden">
                     <Image 
-                        src="/images/team/team.jpg" 
+                        src="/images/team/teamfull.jpg" 
                         alt="The team at Kanyi J. & Company Advocates" 
                         fill
+                         sizes="100vw"
                         className="object-cover"
                     />
                 </div>

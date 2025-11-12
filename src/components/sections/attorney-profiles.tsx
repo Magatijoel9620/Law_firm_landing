@@ -13,31 +13,31 @@ const attorneys: Attorney[] = [
     name: "J.K Kanyi",
     title: "Founding Member",
     imageSrc: "/images/team/kanyi.jpg",
-    description: "J.K Kanyi is the Founding Member of Kanyi J & Company Advocates.",
+    description: "A visionary legal practitioner and founding member of the firm, dedicated to excellence, mentorship, and upholding the highest standards of legal service.",
   },
   {
     name: "C. Mango",
     title: "Lawyer",
-    imageSrc: "/images/team/mango.jpg",
-    description: "Madam Mango is a Lawyer at Kanyi J & Company Advocates.",
+    imageSrc: "/images/team/cecilia.jpg",
+    description: "Known for integrity, precision, and unwavering client advocacy, ensuring every case is handled with diligence and discretion.",
   },
   {
     name: "M.K Maundu",
     title: "Lawyer",
     imageSrc: "/images/team/maundu.jpg",
-    description: "Mr. Maundu is a Lawyer at Kanyi J & Company Advocates.",
+    description: "A dedicated legal mind with a passion for justice, committed to delivering strategic counsel and practical solutions for every client.",
   },
   {
     name: "J. Adoyo",
     title: "Lawyer",
-    imageSrc: "/images/team/adoyo.jpg",
-    description: "J. Adoyo is a Lawyer at Kanyi J & Company Advocates.",
+    imageSrc: "/images/team/julian.jpg",
+    description: "A dynamic and detail-oriented advocate, passionate about advancing justice and providing dependable legal support in every matter.",
   },
   {
     name: "W.N Achoka",
     title: "Lawyer",
-    imageSrc: "/images/team/achoka.jpg",
-    description: "Mr. Achoka is a Lawyer at Kanyi J & Company Advocates.",
+    imageSrc: "/images/team/nelson.jpg",
+    description: "Blending legal expertise with innovative thinking to achieve favorable outcomes and build lasting client trust.",
   },
 ];
 
@@ -53,23 +53,31 @@ export default function AttorneyProfiles() {
             “Professional And Dedicated to Help You Win”
           </p>
         </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {attorneys.map((attorney) => (
-            <Card key={attorney.name} className="overflow-hidden group text-center border-0 bg-transparent shadow-none hover:shadow-xl transition-shadow duration-300 rounded-lg">
-              <CardHeader className="p-0">
-                <div className="aspect-[4/5] relative">
-                  <Image
-                    src={attorney.imageSrc}
-                    alt={`Portrait of ${attorney.name}`}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300 rounded-t-lg"
-                  />
-                </div>
+            <Card
+              key={attorney.name}
+              className="overflow-hidden group text-center border-0 bg-transparent shadow-none hover:shadow-xl transition-shadow duration-300 rounded-lg"
+            >
+              <CardHeader className="p-0 bg-card relative flex justify-center items-center h-80">
+                <Image
+                  src={attorney.imageSrc}
+                  alt={`Portrait of ${attorney.name}`}
+                  fill
+                  className="object-contain transition-transform duration-300 group-hover:scale-105 rounded-t-lg"
+                />
               </CardHeader>
               <CardContent className="p-6 bg-card rounded-b-lg">
-                <CardTitle className="font-headline text-xl text-primary">{attorney.name}</CardTitle>
-                <CardDescription className="text-accent font-semibold">{attorney.title}</CardDescription>
-                <p className="mt-4 text-sm text-muted-foreground">{attorney.description}</p>
+                <CardTitle className="font-headline text-xl text-primary">
+                  {attorney.name}
+                </CardTitle>
+                <CardDescription className="text-accent font-semibold">
+                  {attorney.title}
+                </CardDescription>
+                <p className="mt-4 text-sm text-muted-foreground">
+                  {attorney.description}
+                </p>
               </CardContent>
             </Card>
           ))}
