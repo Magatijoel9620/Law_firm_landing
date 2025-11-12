@@ -11,7 +11,6 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import { sendEmail } from '@/app/actions/send-email';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -36,22 +35,15 @@ export default function Contact() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
-    const result = await sendEmail(values);
+    // Simulate a network request
+    await new Promise(resolve => setTimeout(resolve, 1000));
     setIsSubmitting(false);
 
-    if (result.success) {
-      toast({
-        title: "Message Sent!",
-        description: "Thank you for reaching out. We will get back to you shortly.",
-      });
-      form.reset();
-    } else {
-      toast({
-        variant: 'destructive',
-        title: "Uh oh! Something went wrong.",
-        description: result.error || "There was a problem with your request.",
-      });
-    }
+    toast({
+        title: "Message Sent! (Simulation)",
+        description: "This is a placeholder. The form is not yet connected.",
+    });
+    form.reset();
   }
 
   return (
