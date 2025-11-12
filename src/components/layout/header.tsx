@@ -77,7 +77,6 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center gap-3">
             <Image src="/images/kanyilogo.png" alt="Kanyi J. & Company Advocates Logo" width={50} height={50} className="h-10 w-10 md:h-12 md:w-12" />
-            <span className="text-lg md:text-xl font-headline font-bold whitespace-nowrap text-primary">Kanyi J. & Company Advocates</span>
           </Link>
 
           <nav className="hidden md:flex items-center space-x-6">
