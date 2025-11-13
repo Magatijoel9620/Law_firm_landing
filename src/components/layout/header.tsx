@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "../theme-toggle";
+import { useTheme } from "next-themes";
+
 
 // Nav links
 const navLinks = [
@@ -60,7 +62,7 @@ function TopBar() {
 
 // Client-only Logo component
 function Logo() {
-  const { resolvedTheme } = require("next-themes").useTheme();
+  const { resolvedTheme } = useTheme();
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -113,7 +115,7 @@ export default function Header() {
       <TopBar />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/">
             <Logo />
           </Link>
 
