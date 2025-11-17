@@ -34,17 +34,45 @@ export default function Contact() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsSubmitting(true);
-    // Simulate a network request
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    setIsSubmitting(false);
-
-    toast({
-        title: "Message Sent! (Simulation)",
-        description: "This is a placeholder. The form is not yet connected.",
-    });
-    form.reset();
+    try {
+      setIsSubmitting(true);
+  
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+  
+      setIsSubmitting(false);
+  
+      if (!res.ok) {
+        toast({
+          title: "Error",
+          description: "Message failed to send. Please try again.",
+          variant: "destructive",
+        });
+        return;
+      }
+  
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for reaching out. We will respond shortly.",
+      });
+  
+      form.reset();
+    } catch (error) {
+      setIsSubmitting(false);
+  
+      toast({
+        title: "Network Error",
+        description: "Failed to connect. Check your internet connection.",
+        variant: "destructive",
+      });
+    }
   }
+  
 
   return (
     <section id="contact" className="py-16 sm:py-24 bg-secondary/30">
