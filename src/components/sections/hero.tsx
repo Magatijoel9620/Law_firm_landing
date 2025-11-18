@@ -47,9 +47,26 @@ export default function Hero() {
         <motion.div
            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.4 }}}}
         >
-          <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg transition-transform hover:scale-105" asChild>
-            <Link href="#contact">Book Consultation</Link>
-          </Button>
+         <Button
+  size="lg"
+  className="
+    backdrop-blur-xl 
+    bg-white/15 
+    text-white 
+    border border-white/20 
+    shadow-[0_8px_24px_rgba(255,255,255,0.15)]
+    hover:bg-white/25 
+    hover:border-white/30
+    transition-all 
+    duration-300
+    hover:scale-105
+    rounded-xl
+  "
+  asChild
+>
+  <Link href="#contact">Book Consultation</Link>
+</Button>
+
         </motion.div>
          <motion.div
            variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.6 }}}}
