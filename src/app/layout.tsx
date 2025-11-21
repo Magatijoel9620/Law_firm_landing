@@ -16,8 +16,15 @@ const ptSans = PT_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'Kanyi J. & Company Advocates | Advocates, Commisioners For Oaths & Notaries Public',
-  description: 'Kanyi J & Company Advocates Is a top-tier Law firm based in Mombasa , Kenya.',
+  title:
+    "Kanyi J. & Company Advocates | Advocates, Commissioners for Oaths & Notaries Public",
+  description:
+    "Kanyi J & Company Advocates is a top-tier law firm based in Mombasa, Kenya.",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png", // optional if you add it
+  },
 };
 
 export default function RootLayout({
