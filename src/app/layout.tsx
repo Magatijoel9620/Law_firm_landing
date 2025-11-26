@@ -18,13 +18,15 @@ const ptSans = PT_Sans({
 export const metadata: Metadata = {
   title:
     "Kanyi J. & Company Advocates | Advocates, Commissioners for Oaths & Notaries Public",
+      icons: {
+    icon: "/favicon-v2.ico",
+    shortcut: "/favicon-v2.ico",
+    //apple: "/apple-touch-icon.png", // optional if you add it
+  },
+
   description:
     "Kanyi J & Company Advocates is a top-tier law firm based in Mombasa, Kenya.",
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png", // optional if you add it
-  },
+  
 };
 
 export default function RootLayout({
