@@ -37,7 +37,8 @@ export default function Contact() {
     try {
       setIsSubmitting(true);
   
-      const res = await fetch("/api/contact", {
+      const res = await fetch("/api/contact", //fetch("/contact.php",;switch to this when deploying to cpanel
+                              {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
