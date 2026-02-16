@@ -107,17 +107,18 @@ export default function Contact() {
                     </ul>
                 </div>
                 <div className="w-full h-80 rounded-lg overflow-hidden shadow-lg">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.824240726839!2d39.6648050749752!3d-4.062095995958567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x184012c295f7278d%3A0x861491632731f513!2sBahia%20Mosque!5e0!3m2!1sen!2ske!4v1705663369408!5m2!1sen!2ske"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen={false}
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="Office Location"
-                ></iframe>
-                </div>
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d994.9434057422877!2d39.67570941676675!3d-4.066498861356912!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1840136493d8c1c7%3A0x69fee98a78e466e1!2sZakyo%20Plaza!5e0!3m2!1sen!2ske!4v1771233261866!5m2!1sen!2ske"
+    width="100%"
+    height="100%"
+    style={{ border: 0 }}
+    allowFullScreen={false}
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+    title="Office Location"
+  ></iframe>
+</div>
+
             </div>
             <div>
               <Card className="bg-background p-8">
