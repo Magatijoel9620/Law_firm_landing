@@ -169,9 +169,17 @@ export default function Footer() {
         {/* Footer Bottom */}
         <div className="mt-8 pt-8 border-t border-primary-foreground/20 text-center text-sm text-primary-foreground/60">
           <p>
-            &copy; {currentYear} Kanyi J. & Company Advocates. All Rights
-            Reserved. Designed by Hempon Group
-          </p>
+  &copy; {currentYear} Kanyi J. & Company Advocates. All Rights
+  Reserved. Designed by{" "}
+  <a
+    href="https://hempon-group.vercel.app/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-accent hover:underline"
+  >
+    Hempon Group
+  </a>
+</p>
         </div>
       </div>
     </footer>
