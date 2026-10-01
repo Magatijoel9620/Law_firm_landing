@@ -3,12 +3,27 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Scale, Linkedin, Twitter, Facebook, MapPin, Phone, Mail } from "lucide-react";
+import {
+  Linkedin,
+  Twitter,
+  Facebook,
+  MapPin,
+  Phone,
+  Mail,
+  MessageCircle,
+  ArrowUpRight,
+} from "lucide-react";
+
+const WHATSAPP_NUMBER = "254735830584";
+
+const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+  "Hello Kanyi J. & Company Advocates, I would like to make an enquiry."
+)}`;
 
 const quickLinks = [
   { href: "/#practice-areas", label: "Our Services" },
   { href: "/#history", label: "About Us" },
-  { href: "/#attorneys", label: "Team" },
+  { href: "/#attorneys", label: "Our Team" },
   { href: "/#contact", label: "Contact Us" },
 ];
 
@@ -21,8 +36,29 @@ const serviceLinks = [
   { href: "/#practice-areas", label: "Insolvency Law" },
 ];
 
+const offices = [
+  {
+    label: "Mombasa",
+    address: "David Kayanda Rd, Mombasa, Kenya",
+    href:
+      "https://www.google.com/maps/search/?api=1&query=David+Kayanda+Rd%2C+Mombasa%2C+Kenya",
+  },
+  {
+    label: "Kilifi",
+    address:
+      "Lengai House, Kenyatta Street, Opposite Kibiru Emporium, P. O. Box 855, Kilifi.",
+  },
+  {
+    label: "Malindi",
+    address:
+      "Ruby Plaza, Vasco Da Gama Road, Next to Malindi Law Court, Malindi.",
+  },
+];
+
 export default function Footer() {
-  const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
+  const [currentYear, setCurrentYear] = useState(
+    new Date().getFullYear()
+  );
 
   useEffect(() => {
     setCurrentYear(new Date().getFullYear());
@@ -30,68 +66,82 @@ export default function Footer() {
 
   return (
     <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-sm">
-          {/* About + Image Section */}
-          <div className="flex flex-col space-y-4">
-            <div className="relative w-full aspect-[5/3] rounded-lg overflow-hidden shadow-lg">
+      {/* Main footer */}
+      <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-[1.35fr_0.7fr_1fr_1.15fr]">
+          {/* About */}
+          <div>
+            <div className="relative mb-6 aspect-[5/3] w-full max-w-sm overflow-hidden rounded-2xl border border-primary-foreground/10 shadow-2xl">
               <Image
                 src="/images/reception.jpg"
                 alt="Kanyi J. & Company Advocates Reception"
                 fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 33vw"
-                priority
+                className="object-cover transition-transform duration-700 hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 360px"
               />
             </div>
-            <div>
-              <h3 className="text-lg font-headline font-semibold text-accent mb-3">
-                About Us
-              </h3>
-              <p className="text-primary-foreground/80 max-w-sm">
-                A top-tier Law firm in Mombasa, Kenya. We offer a diversity of
-                expertise in all areas of major practice. We are a full service
-                law firm with leading expertise in various areas of Law in Kenya.
-              </p>
-              <div className="flex space-x-4 mt-4">
-                <a
-                  href="#"
-                  aria-label="LinkedIn"
-                  className="hover:text-accent transition-colors"
-                >
-                  <Linkedin className="h-6 w-6" />
-                </a>
-                <a
-                  href="#"
-                  aria-label="Twitter"
-                  className="hover:text-accent transition-colors"
-                >
-                  <Twitter className="h-6 w-6" />
-                </a>
-                <a
-                  href="#"
-                  aria-label="Facebook"
-                  className="hover:text-accent transition-colors"
-                >
-                  <Facebook className="h-6 w-6" />
-                </a>
-              </div>
+
+            <h3 className="mb-3 font-headline text-xl font-semibold text-accent">
+              Kanyi J. & Company Advocates
+            </h3>
+
+            <p className="max-w-md text-sm leading-7 text-primary-foreground/70">
+              A full-service law firm serving clients across Kenya, with
+              expertise across major areas of legal practice.
+            </p>
+
+            <div className="mt-6 flex items-center gap-3">
+              <a
+                href="#"
+                aria-label="LinkedIn"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-primary-foreground/15 transition-all hover:border-accent hover:bg-accent hover:text-accent-foreground"
+              >
+                <Linkedin className="h-4 w-4" />
+              </a>
+
+              <a
+                href="#"
+                aria-label="Twitter"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-primary-foreground/15 transition-all hover:border-accent hover:bg-accent hover:text-accent-foreground"
+              >
+                <Twitter className="h-4 w-4" />
+              </a>
+
+              <a
+                href="#"
+                aria-label="Facebook"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-primary-foreground/15 transition-all hover:border-accent hover:bg-accent hover:text-accent-foreground"
+              >
+                <Facebook className="h-4 w-4" />
+              </a>
+
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-accent-foreground transition-all hover:-translate-y-1 hover:shadow-lg"
+              >
+                <MessageCircle className="h-4 w-4" />
+              </a>
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Quick links */}
           <div>
-            <h3 className="text-lg font-headline font-semibold text-accent mb-4">
-              Quick Links
+            <h3 className="mb-5 font-headline text-lg font-semibold text-accent">
+              Explore
             </h3>
-            <ul className="space-y-2">
+
+            <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="hover:text-accent transition-colors"
+                    className="group inline-flex items-center gap-1 text-sm text-primary-foreground/70 transition-colors hover:text-accent"
                   >
                     {link.label}
+                    <ArrowUpRight className="h-3.5 w-3.5 opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100" />
                   </Link>
                 </li>
               ))}
@@ -100,86 +150,156 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-lg font-headline font-semibold text-accent mb-4">
-              Services
+            <h3 className="mb-5 font-headline text-lg font-semibold text-accent">
+              Our Services
             </h3>
-            <ul className="space-y-2">
+
+            <ul className="space-y-3">
               {serviceLinks.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="hover:text-accent transition-colors"
+                    className="group inline-flex items-start gap-1 text-sm leading-5 text-primary-foreground/70 transition-colors hover:text-accent"
                   >
                     {link.label}
+                    <ArrowUpRight className="mt-0.5 h-3.5 w-3.5 shrink-0 opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100" />
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact Info */}
+          {/* Contact */}
           <div>
-            <h3 className="text-lg font-headline font-semibold text-accent mb-4">
-              Contact Info
+            <h3 className="mb-5 font-headline text-lg font-semibold text-accent">
+              Contact Us
             </h3>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-3">
-                <Mail className="h-5 w-5 mt-0.5 text-accent shrink-0" />
-                <a
-                  href="mailto:info@kanyij-advocates.co.ke"
-                  className="text-primary-foreground/80 hover:text-accent transition-colors"
-                >
+
+            <div className="space-y-4">
+              <a
+                href="mailto:info@kanyij-advocates.co.ke"
+                className="flex items-start gap-3 text-sm text-primary-foreground/70 transition-colors hover:text-accent"
+              >
+                <Mail className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
+                <span className="break-all">
                   info@kanyij-advocates.co.ke
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <Phone className="h-5 w-5 mt-0.5 text-accent shrink-0" />
-                <a
-                  href="tel:0720988571"
-                  className="text-primary-foreground/80 hover:text-accent transition-colors"
+                </span>
+              </a>
+
+              <a
+                href="tel:+254720988571"
+                className="flex items-start gap-3 text-sm text-primary-foreground/70 transition-colors hover:text-accent"
+              >
+                <Phone className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
+                <span>+254 720 988571</span>
+              </a>
+
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-3 text-sm text-primary-foreground/70 transition-colors hover:text-accent"
+              >
+                <MessageCircle className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
+                <span>
+                  <strong className="font-semibold text-primary-foreground">
+                    WhatsApp
+                  </strong>
+                  <br />
+                  +254 735 830584
+                </span>
+              </a>
+            </div>
+
+            <div className="mt-6 space-y-4">
+              {offices.map((office) => (
+                <div
+                  key={office.label}
+                  className="flex items-start gap-3"
                 >
-                  +254 0720 988571
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 mt-0.5 text-accent shrink-0" />
-                <p className="text-primary-foreground/80">
-                  Zakay Plaza, 2nd Floor, Kizingo Shopping Centre, Taher Sheikh
-                  Said Road, Mombasa.
-                </p>
-              </li>
-              <li className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 mt-0.5 text-accent shrink-0" />
-                <p className="text-primary-foreground/80">
-                  Lengai House, Kenyatta Street, Opposite Kibiru Emporium, P. O.
-                  Box 855, Kilifi.
-                </p>
-              </li>
-              <li className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 mt-0.5 text-accent shrink-0" />
-                <p className="text-primary-foreground/80">
-                  Ruby Plaza, Vasco Da Gama Road, Next to Malindi Law Court,
-                  Malindi.
-                </p>
-              </li>
-            </ul>
+                  <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
+
+                  <div className="text-sm leading-6 text-primary-foreground/70">
+                    <p className="font-semibold text-primary-foreground">
+                      {office.label}
+                    </p>
+
+                    {office.href ? (
+                      <a
+                        href={office.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="transition-colors hover:text-accent"
+                      >
+                        {office.address}
+                      </a>
+                    ) : (
+                      <p>{office.address}</p>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Footer Bottom */}
-        <div className="mt-8 pt-8 border-t border-primary-foreground/20 text-center text-sm text-primary-foreground/60">
+        {/* CTA */}
+        <div className="mt-14 overflow-hidden rounded-3xl border border-primary-foreground/10 bg-primary-foreground/[0.04] p-6 sm:p-8">
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.15em] text-accent">
+                Need legal assistance?
+              </p>
+
+              <h3 className="mt-2 font-headline text-2xl font-semibold sm:text-3xl">
+                Let&apos;s discuss your matter.
+              </h3>
+
+              <p className="mt-2 max-w-xl text-sm leading-6 text-primary-foreground/60">
+                Send us an enquiry or start a conversation with our team on
+                WhatsApp.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/#contact"
+                className="inline-flex items-center justify-center rounded-full bg-primary-foreground px-6 py-3 text-sm font-semibold text-primary transition-all hover:-translate-y-0.5 hover:bg-primary-foreground/90"
+              >
+                Make an Enquiry
+              </Link>
+
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground shadow-lg shadow-accent/20 transition-all hover:-translate-y-0.5 hover:bg-accent/90"
+              >
+                <MessageCircle className="h-4 w-4" />
+                WhatsApp Us
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom */}
+        <div className="mt-8 flex flex-col gap-3 border-t border-primary-foreground/10 pt-8 text-center text-xs text-primary-foreground/50 sm:flex-row sm:items-center sm:justify-between sm:text-left">
           <p>
-  &copy; {currentYear} Kanyi J. & Company Advocates. All Rights
-  Reserved. Designed by{" "}
-  <a
-    href="https://hempon-group.vercel.app/"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="text-accent hover:underline"
-  >
-    Hempon Group
-  </a>
-</p>
+            © {currentYear} Kanyi J. &amp; Company Advocates. All Rights
+            Reserved.
+          </p>
+
+          <p>
+            Designed &amp; developed by{" "}
+            <a
+              href="https://hempon-group.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-primary-foreground/70 transition-colors hover:text-accent"
+            >
+              Hempon Group
+            </a>
+          </p>
         </div>
       </div>
     </footer>

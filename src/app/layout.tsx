@@ -1,5 +1,5 @@
 import type {Metadata} from 'next';
-import './globals.css';
+import './globals.css'; //added a declaration file for css imports in globals.d.ts to avoid typescript errors
 import { Toaster } from '@/components/ui/toaster';
 import { Alegreya, PT_Sans } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';

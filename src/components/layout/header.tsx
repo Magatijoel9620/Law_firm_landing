@@ -1,57 +1,97 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, Mail, Phone } from "lucide-react";
+import {
+  Menu,
+  Mail,
+  Phone,
+  MessageCircle,
+  ArrowUpRight,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import {
+  InteractionLayer,
+  Magnetic,
+  ScrollProgress,
+} from "@/components/interactive/InteractionLayer";
+import { motion } from "framer-motion";
 import { ThemeToggle } from "../theme-toggle";
 import { useTheme } from "next-themes";
 
+const WHATSAPP_NUMBER = "254735830584";
 
-// Nav links
+const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+  "Hello Kanyi J. & Company Advocates, I would like to make an enquiry."
+)}`;
+
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/#history", label: "About Us" },
   { href: "/#practice-areas", label: "Services" },
   { href: "/#attorneys", label: "Team" },
-  { href: "https://kjc.wakilicms.com/", label: "Portal", external: true },
-  { href: "/#contact", label: "Contact Us" },
+  {
+    href: "https://kjc.wakilicms.com/",
+    label: "Portal",
+    external: true,
+  },
+  { href: "/#contact", label: "Contact" },
 ];
 
-// TopBar component
 function TopBar() {
   return (
-    <div className="bg-primary text-primary-foreground">
+    <div className="hidden border-b border-primary-foreground/10 bg-primary text-primary-foreground sm:block">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-12 text-sm">
-          <div className="flex items-center gap-6">
+        <div className="flex min-h-11 items-center justify-between gap-4 text-sm">
+          <div className="flex items-center gap-5">
             <a
               href="mailto:info@kanyij-advocates.co.ke"
-              className="flex items-center gap-2 text-primary-foreground/80 hover:text-accent transition-colors"
+              className="group flex items-center gap-2 text-primary-foreground/75 transition-colors hover:text-accent"
             >
-              <Mail className="h-4 w-4 text-accent" />
-              <span className="hidden sm:inline">info@kanyij-advocates.co.ke</span>
+              <Mail className="h-3.5 w-3.5 text-accent" />
+              <span>info@kanyij-advocates.co.ke</span>
             </a>
+
             <a
-              href="tel:0720988571"
-              className="flex items-center gap-2 text-primary-foreground/80 hover:text-accent transition-colors"
+              href="tel:+254720988571"
+              className="group flex items-center gap-2 text-primary-foreground/75 transition-colors hover:text-accent"
             >
-              <Phone className="h-4 w-4 text-accent" />
-              <span className="hidden sm:inline">0720988571 | 0735830584</span>
+              <Phone className="h-3.5 w-3.5 text-accent" />
+              <span>+254 720 988571</span>
             </a>
           </div>
-          <div className="flex items-center gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              asChild
-              className="border-accent text-accent hover:bg-accent hover:text-accent-foreground"
+
+          <div className="flex items-center gap-3">
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 font-medium text-accent transition-colors hover:text-primary-foreground"
             >
-              <Link href="/#contact">Get A Schedule</Link>
-            </Button>
+              <MessageCircle className="h-4 w-4" />
+              WhatsApp
+            </a>
+
+            <span className="h-4 w-px bg-primary-foreground/20" />
+
+            <Magnetic strength={0.12}>
+              <Button
+                variant="outline"
+                size="sm"
+                asChild
+                className="h-8 rounded-full border-accent bg-transparent px-4 text-accent hover:bg-accent hover:text-accent-foreground"
+              >
+                <Link href="/#contact">Make an Enquiry</Link>
+              </Button>
+            </Magnetic>
+
             <ThemeToggle />
           </div>
         </div>
@@ -60,7 +100,6 @@ function TopBar() {
   );
 }
 
-// Client-only Logo component
 function Logo() {
   const { resolvedTheme } = useTheme();
   const [isClient, setIsClient] = useState(false);
@@ -69,15 +108,32 @@ function Logo() {
     setIsClient(true);
   }, []);
 
-  if (!isClient) return null;
+  if (!isClient) {
+    return (
+      <div className="relative h-16 w-[170px] md:w-[210px]">
+        <Image
+          src="/images/kanyilogo-removebg-preview.png"
+          alt="Kanyi J. & Company Advocates"
+          fill
+          sizes="210px"
+          className="object-contain"
+          priority
+        />
+      </div>
+    );
+  }
 
   return (
-    <div className="relative w-[180px] md:w-[220px] lg:w-[260px] h-[80px]">
+    <div className="relative h-16 w-[170px] md:w-[210px] lg:w-[230px]">
       <Image
-        src={resolvedTheme === "dark" ? "/images/kanyilogo.png" : "/images/kanyilogo-removebg-preview.png"}
+        src={
+          resolvedTheme === "dark"
+            ? "/images/kanyilogo.png"
+            : "/images/kanyilogo-removebg-preview.png"
+        }
         alt="Kanyi J. & Company Advocates Logo"
         fill
-        sizes="(max-width: 768px) 180px, (max-width: 1200px) 220px, 260px"
+        sizes="(max-width: 768px) 170px, (max-width: 1200px) 210px, 230px"
         className="object-contain transition-opacity duration-300"
         priority
       />
@@ -88,92 +144,202 @@ function Logo() {
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [visible, setVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
 
-  // Hide header on scroll down
-  const handleScroll = () => {
-    if (window.scrollY > lastScrollY && window.scrollY > 50) {
-      setVisible(false);
-    } else {
-      setVisible(true);
-    }
-    setLastScrollY(window.scrollY);
-  };
+  const lastScrollY = useRef(0);
+  const ticking = useRef(false);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+    const updateHeader = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY <= 20) {
+        setVisible(true);
+      } else if (currentScrollY > lastScrollY.current + 6) {
+        setVisible(false);
+      } else if (currentScrollY < lastScrollY.current - 6) {
+        setVisible(true);
+      }
+
+      lastScrollY.current = currentScrollY;
+      ticking.current = false;
+    };
+
+    const handleScroll = () => {
+      if (!ticking.current) {
+        window.requestAnimationFrame(updateHeader);
+        ticking.current = true;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <header
-      className={cn(
-        "bg-background/80 text-foreground shadow-sm sticky top-0 z-50 backdrop-blur-sm transition-transform duration-300",
-        visible ? "translate-y-0" : "-translate-y-full"
-      )}
-    >
-      <TopBar />
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          <Link href="/">
-            <Logo />
-          </Link>
+    <>
+      <InteractionLayer />
+      <ScrollProgress />
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center space-x-6">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                target={link.external ? "_blank" : "_self"}
-                rel={link.external ? "noopener noreferrer" : ""}
-                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+      <header
+        className={cn(
+          "sticky top-0 z-50 border-b border-border/40 bg-background/85 text-foreground shadow-sm backdrop-blur-xl transition-transform duration-300",
+          visible ? "translate-y-0" : "-translate-y-full"
+        )}
+      >
+        <TopBar />
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex h-[72px] items-center justify-between gap-6">
+            <Link
+              href="/"
+              className="shrink-0 transition-opacity hover:opacity-85"
+            >
+              <Logo />
+            </Link>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden items-center gap-1 md:flex">
+              {navLinks.map((link) => (
+                <motion.div
+                  key={link.href}
+                  whileHover={{ y: -1 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Link
+                    href={link.href}
+                    target={link.external ? "_blank" : undefined}
+                    rel={
+                      link.external
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                    className={cn(
+                      "relative flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors",
+                      "hover:bg-accent/10 hover:text-primary",
+                      link.label === "Contact" &&
+                        "bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground"
+                    )}
+                  >
+                    {link.label}
+
+                    {link.external && (
+                      <ArrowUpRight className="h-3.5 w-3.5" />
+                    )}
+                  </Link>
+                </motion.div>
+              ))}
+
+              {/* Desktop WhatsApp CTA */}
+              <Magnetic strength={0.12}>
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ml-2 inline-flex h-10 items-center gap-2 rounded-full bg-accent px-5 text-sm font-semibold text-accent-foreground shadow-md shadow-accent/20 transition-all hover:-translate-y-0.5 hover:bg-accent/90 hover:shadow-lg"
+                >
+                  <MessageCircle className="h-4 w-4" />
+                  WhatsApp
+                </a>
+              </Magnetic>
+            </nav>
+
+            {/* Mobile */}
+            <div className="flex items-center gap-2 md:hidden">
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Chat with us on WhatsApp"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-sm"
               >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
+                <MessageCircle className="h-5 w-5" />
+              </a>
 
-          {/* Mobile menu */}
-          <div className="md:hidden">
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-6 w-6" />
-                  <span className="sr-only">Open menu</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] bg-background p-0">
-                <div className="flex flex-col h-full">
-                  <div className="p-6 border-b">
-                    <Link href="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
-                      <Image src="/images/kanyilogo.png" alt="Logo" width={40} height={40} />
-                      <span className="text-xl font-headline font-bold text-primary">Kanyi J. & Co.</span>
-                    </Link>
-                  </div>
-                  <nav className="flex flex-col p-6 space-y-4">
-                    {navLinks.map((link) => (
+              <Sheet open={isOpen} onOpenChange={setIsOpen}>
+                <SheetTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="rounded-full"
+                  >
+                    <Menu className="h-6 w-6" />
+                    <span className="sr-only">Open menu</span>
+                  </Button>
+                </SheetTrigger>
+
+                <SheetContent
+                  side="right"
+                  className="w-[320px] border-l bg-background/95 p-0 backdrop-blur-xl"
+                >
+                  <div className="flex h-full flex-col">
+                    <div className="border-b p-6">
                       <Link
-                        key={link.href}
-                        href={link.href}
-                        target={link.external ? "_blank" : "_self"}
-                        rel={link.external ? "noopener noreferrer" : ""}
-                        className="text-lg font-medium hover:text-accent transition-colors"
+                        href="/"
+                        className="flex items-center"
                         onClick={() => setIsOpen(false)}
                       >
-                        {link.label}
+                        <Logo />
                       </Link>
-                    ))}
-                  </nav>
-                  <div className="mt-auto p-6 flex justify-center">
-                    <ThemeToggle />
+                    </div>
+
+                    <nav className="flex flex-col p-6">
+                      {navLinks.map((link) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          target={
+                            link.external ? "_blank" : undefined
+                          }
+                          rel={
+                            link.external
+                              ? "noopener noreferrer"
+                              : undefined
+                          }
+                          className="flex items-center justify-between border-b border-border/50 py-4 text-base font-medium transition-colors hover:text-accent"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {link.label}
+
+                          {link.external && (
+                            <ArrowUpRight className="h-4 w-4" />
+                          )}
+                        </Link>
+                      ))}
+                    </nav>
+
+                    <div className="mt-auto space-y-4 p-6">
+                      <a
+                        href={whatsappUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex w-full items-center justify-center gap-2 rounded-full bg-accent px-5 py-3 font-semibold text-accent-foreground shadow-lg shadow-accent/20"
+                      >
+                        <MessageCircle className="h-5 w-5" />
+                        Chat on WhatsApp
+                      </a>
+
+                      <a
+                        href="tel:+254720988571"
+                        className="flex w-full items-center justify-center gap-2 rounded-full border border-border px-5 py-3 font-medium transition-colors hover:border-accent hover:text-accent"
+                      >
+                        <Phone className="h-4 w-4" />
+                        +254 720 988571
+                      </a>
+
+                      <div className="flex justify-center pt-2">
+                        <ThemeToggle />
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </SheetContent>
-            </Sheet>
+                </SheetContent>
+              </Sheet>
+            </div>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </>
   );
 }

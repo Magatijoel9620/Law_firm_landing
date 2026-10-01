@@ -1,82 +1,9 @@
 "use client";
-
-import React from "react";
 import Image from "next/image";
-
-const partners = [
-  "ac-removebg-preview.png",
-  "bb-removebg-preview.png",
-  "cda-removebg-preview.png",
-  "coruggated-removebg-preview.png",
-  "equity-removebg-preview.png",
-  "gil-removebg-preview.png",
-  "hfc-removebg-preview.png",
-  "kpa-removebg-preview.png",
-  "kwft-removebg-preview.png",
-  "little-removebg-preview.png",
-  "mary-removebg-preview.png",
-  "mombasa_cement-removebg-preview.png",
-  "synergy-removebg-preview.png",
-  "transpares-removebg-preview.png",
-];
-
+import { motion } from "framer-motion";
+import { Reveal } from "@/components/interactive/InteractionLayer";
+const partners = ["ac-removebg-preview.png","bb-removebg-preview.png","cda-removebg-preview.png","coruggated-removebg-preview.png","equity-removebg-preview.png","gil-removebg-preview.png","hfc-removebg-preview.png","kpa-removebg-preview.png","kwft-removebg-preview.png","little-removebg-preview.png","mary-removebg-preview.png","mombasa_cement-removebg-preview.png","synergy-removebg-preview.png","transpares-removebg-preview.png"];
 export default function Partners() {
-  // Duplicate the array for seamless infinite scroll
-  const logoSet = [...partners, ...partners];
-
-  return (
-    <section id="partners" className="py-16 sm:py-24 bg-secondary/30 overflow-hidden">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-headline font-bold tracking-tight text-primary">
-            Trusted By Leading Corporates & Organizations
-          </h2>
-          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-            We are honored to serve distinguished clients across diverse industries.
-          </p>
-        </div>
-
-        {/* Infinite scroll container */}
-        <div className="relative w-full overflow-hidden group">
-          <div
-            className="flex animate-scroll-slow whitespace-nowrap group-hover:[animation-play-state:paused]"
-            style={{ animation: "scroll 35s linear infinite" }}
-          >
-            {logoSet.map((name, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-center min-w-[180px] md:min-w-[220px] mx-6 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
-              >
-                <Image
-                  src={`/images/icons/${name}`}
-                  alt={name.replace(/-removebg-preview\.png$/, "").replace(/_/g, " ")}
-                  width={200}
-                  height={100}
-                  className="object-contain"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Animation keyframes */}
-      <style jsx>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-
-        .animate-scroll-slow {
-          display: flex;
-          width: max-content;
-          animation: scroll 35s linear infinite;
-        }
-      `}</style>
-    </section>
-  );
+ const logos=[...partners,...partners];
+ return <section id="partners" className="overflow-hidden border-y border-border/60 bg-secondary/20 py-20 sm:py-24"><div className="container mx-auto px-5 sm:px-8 lg:px-10"><Reveal className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"><div><p className="mb-3 text-xs font-semibold uppercase tracking-[.32em] text-accent">Client relationships</p><h2 className="font-headline text-3xl font-bold tracking-tight text-primary sm:text-5xl">Trusted by leading organizations.</h2></div><p className="max-w-md text-sm leading-6 text-muted-foreground">We are honored to serve distinguished clients across diverse industries.</p></Reveal></div><div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]"><motion.div className="flex w-max items-center" animate={{ x: ["0%", "-50%"] }} transition={{ duration: 42, repeat: Infinity, ease: "linear" }} whileHover={{ animationPlayState: "paused" }}>{logos.map((name,index)=><div key={`${name}-${index}`} className="flex h-24 w-[180px] shrink-0 items-center justify-center px-7 opacity-50 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0 md:w-[220px]"><Image src={`/images/icons/${name}`} alt={name.replace(/-removebg-preview\.png$/,'').replace(/_/g,' ')} width={180} height={80} className="max-h-16 object-contain"/></div>)}</motion.div></div></section>;
 }

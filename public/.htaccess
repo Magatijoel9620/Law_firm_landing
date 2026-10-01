@@ -1,0 +1,8 @@
+RewriteEngine On
+RewriteBase /
+
+# Pass all requests to Passenger Node app
+PassengerAppRoot /home/USERNAME/ #to replace on deployment
+PassengerBaseURI /
+PassengerAppType node
+PassengerStartupFile server.js
