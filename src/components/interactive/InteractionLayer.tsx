@@ -43,12 +43,12 @@ export function InteractionLayer() {
       <motion.div
         aria-hidden
         style={{ x: glowX, y: glowY }}
-        className="pointer-events-none fixed left-0 top-0 z-[90] h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/[0.07] blur-3xl mix-blend-screen"
+        className="pointer-events-none fixed left-0 top-0 z-[90] h-80 w-80 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/[0.10] blur-3xl mix-blend-screen"
       />
       <motion.div
         aria-hidden
         style={{ x: sx, y: sy }}
-        className="pointer-events-none fixed left-0 top-0 z-[100] hidden h-7 w-7 -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent/70 md:block"
+        className="pointer-events-none fixed left-0 top-0 z-[100] hidden h-8 w-8 -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent/75 bg-accent/[0.03] md:block"
       />
       <motion.div
         aria-hidden

@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   Menu,
-  Mail,
   Phone,
   MessageCircle,
   ArrowUpRight,
@@ -45,61 +44,6 @@ const navLinks = [
   { href: "/#contact", label: "Contact" },
 ];
 
-function TopBar() {
-  return (
-    <div className="hidden border-b border-primary-foreground/10 bg-primary text-primary-foreground sm:block">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex min-h-11 items-center justify-between gap-4 text-sm">
-          <div className="flex items-center gap-5">
-            <a
-              href="mailto:info@kanyij-advocates.co.ke"
-              className="group flex items-center gap-2 text-primary-foreground/75 transition-colors hover:text-accent"
-            >
-              <Mail className="h-3.5 w-3.5 text-accent" />
-              <span>info@kanyij-advocates.co.ke</span>
-            </a>
-
-            <a
-              href="tel:+254720988571"
-              className="group flex items-center gap-2 text-primary-foreground/75 transition-colors hover:text-accent"
-            >
-              <Phone className="h-3.5 w-3.5 text-accent" />
-              <span>+254 720 988571</span>
-            </a>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 font-medium text-accent transition-colors hover:text-primary-foreground"
-            >
-              <MessageCircle className="h-4 w-4" />
-              WhatsApp
-            </a>
-
-            <span className="h-4 w-px bg-primary-foreground/20" />
-
-            <Magnetic strength={0.12}>
-              <Button
-                variant="outline"
-                size="sm"
-                asChild
-                className="h-8 rounded-full border-accent bg-transparent px-4 text-accent hover:bg-accent hover:text-accent-foreground"
-              >
-                <Link href="/#contact">Make an Enquiry</Link>
-              </Button>
-            </Magnetic>
-
-            <ThemeToggle />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function Logo() {
   const { resolvedTheme } = useTheme();
   const [isClient, setIsClient] = useState(false);
@@ -110,7 +54,7 @@ function Logo() {
 
   if (!isClient) {
     return (
-      <div className="relative h-16 w-[170px] md:w-[210px]">
+      <div className="relative h-14 w-[160px] md:h-16 md:w-[210px]">
         <Image
           src="/images/kanyilogo-removebg-preview.png"
           alt="Kanyi J. & Company Advocates"
@@ -124,7 +68,7 @@ function Logo() {
   }
 
   return (
-    <div className="relative h-16 w-[170px] md:w-[210px] lg:w-[230px]">
+    <div className="relative h-14 w-[160px] md:h-16 md:w-[210px] lg:w-[230px]">
       <Image
         src={
           resolvedTheme === "dark"
@@ -144,6 +88,7 @@ function Logo() {
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [visible, setVisible] = useState(true);
+  const [scrolled, setScrolled] = useState(false);
 
   const lastScrollY = useRef(0);
   const ticking = useRef(false);
@@ -151,6 +96,7 @@ export default function Header() {
   useEffect(() => {
     const updateHeader = () => {
       const currentScrollY = window.scrollY;
+      setScrolled(currentScrollY > 24);
 
       if (currentScrollY <= 20) {
         setVisible(true);
@@ -185,23 +131,31 @@ export default function Header() {
 
       <header
         className={cn(
-          "sticky top-0 z-50 border-b border-border/40 bg-background/85 text-foreground shadow-sm backdrop-blur-xl transition-transform duration-300",
-          visible ? "translate-y-0" : "-translate-y-full"
+          "fixed inset-x-0 top-3 z-[80] text-foreground transition-all duration-500",
+          visible ? "translate-y-0" : "-translate-y-full",
+          scrolled
+            ? "drop-shadow-[0_18px_40px_rgba(0,0,0,.16)]"
+            : "drop-shadow-[0_12px_30px_rgba(0,0,0,.10)]"
         )}
       >
-        <TopBar />
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex h-[72px] items-center justify-between gap-6">
+        <div className="mx-auto w-full max-w-[1440px] px-3 sm:px-6">
+          <div
+            className={cn(
+              "relative flex h-[68px] items-center justify-between gap-4 rounded-full border px-4 transition-all duration-500 sm:h-[74px] sm:px-6",
+              scrolled
+                ? "border-white/25 bg-background/75 shadow-[inset_0_1px_0_rgba(255,255,255,.18),0_16px_50px_rgba(0,0,0,.16)] backdrop-blur-2xl backdrop-saturate-150"
+                : "border-white/20 bg-background/55 shadow-[inset_0_1px_0_rgba(255,255,255,.2),0_12px_36px_rgba(0,0,0,.12)] backdrop-blur-xl backdrop-saturate-150"
+            )}
+          >
             <Link
               href="/"
-              className="shrink-0 transition-opacity hover:opacity-85"
+              className="shrink-0 transition-all duration-300 hover:opacity-85"
             >
               <Logo />
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden items-center gap-1 md:flex">
+            <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 xl:flex">
               {navLinks.map((link) => (
                 <motion.div
                   key={link.href}
@@ -247,7 +201,7 @@ export default function Header() {
             </nav>
 
             {/* Mobile */}
-            <div className="flex items-center gap-2 md:hidden">
+            <div className="flex items-center gap-2 xl:hidden">
               <a
                 href={whatsappUrl}
                 target="_blank"
@@ -336,6 +290,10 @@ export default function Header() {
                   </div>
                 </SheetContent>
               </Sheet>
+            </div>
+
+            <div className="hidden xl:block">
+              <ThemeToggle />
             </div>
           </div>
         </div>

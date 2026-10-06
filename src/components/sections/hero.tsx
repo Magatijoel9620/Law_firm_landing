@@ -22,9 +22,9 @@ export default function Hero() {
       <motion.div style={{ y: imageY }} className="absolute -inset-[9%]">
         <Image src="/images/team/team.jpg" alt="Team of Kanyi J. & Company Advocates" fill priority className="object-cover object-center" sizes="100vw" />
       </motion.div>
-      <div className="absolute inset-0 bg-[#07100b]/65" />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,10,7,.96)_0%,rgba(5,10,7,.78)_43%,rgba(5,10,7,.18)_100%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_40%,rgba(210,169,82,.18),transparent_27%)]" />
+      <div className="absolute inset-0 bg-[#07100b]/60" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,10,7,.96)_0%,rgba(5,10,7,.76)_42%,rgba(5,10,7,.20)_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_40%,rgba(210,169,82,.22),transparent_28%),radial-gradient(circle_at_20%_20%,rgba(255,255,255,.06),transparent_24%)]" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#101411]/80 via-[#101411]/30 to-transparent" />
 
       <motion.div style={{ opacity }} className="relative z-10 mx-auto grid min-h-[calc(100svh-80px)] max-w-7xl items-center px-5 py-16 sm:px-8 lg:grid-cols-[1.08fr_.92fr] lg:px-10">

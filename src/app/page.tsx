@@ -18,6 +18,7 @@ const Contact = dynamic(() => import('@/components/sections/contact'), { loading
 import Footer from '@/components/layout/footer';
 import Header from '@/components/layout/header';
 import BackToTopButton from '@/components/layout/back-to-top-button';
+import { MessageCircle } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -38,6 +39,15 @@ export default function Home() {
         </div>
       </main>
       <Footer />
+      <a
+        href="https://wa.me/254735830584?text=Hello%20Kanyi%20J.%20%26%20Company%20Advocates%2C%20I%20would%20like%20to%20make%20an%20enquiry."
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat with Kanyi J. & Company Advocates on WhatsApp"
+        className="fixed bottom-5 right-5 z-[70] flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-[#101411]/80 text-accent shadow-[0_16px_45px_rgba(0,0,0,.24)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:bg-accent hover:text-accent-foreground sm:bottom-7 sm:right-7"
+      >
+        <MessageCircle className="h-5 w-5" />
+      </a>
       <BackToTopButton />
     </div>
   );

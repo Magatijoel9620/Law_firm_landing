@@ -84,9 +84,9 @@ export default function LegalObject() {
         className="
           absolute inset-[13%]
           rounded-[38%]
-          border border-white/[0.14]
-          bg-white/[0.025]
-          shadow-[0_30px_80px_rgba(0,0,0,0.16)]
+          border border-white/[0.08]
+          bg-white/[0.012]
+          shadow-[0_30px_80px_rgba(0,0,0,0.10)]
           backdrop-blur-[3px]
           [transform-style:preserve-3d]
         "
@@ -96,10 +96,10 @@ export default function LegalObject() {
           className="
             absolute inset-5
             rounded-[34%]
-            border border-accent/20
+            border border-accent/10
             bg-gradient-to-br
-            from-white/[0.055]
-            via-accent/[0.025]
+            from-white/[0.03]
+            via-accent/[0.012]
             to-transparent
           "
         />
@@ -109,8 +109,8 @@ export default function LegalObject() {
           className="
             absolute inset-[18%]
             rounded-full
-            border border-white/[0.10]
-            bg-black/[0.025]
+            border border-white/[0.06]
+            bg-black/[0.012]
           "
         />
 
@@ -126,9 +126,9 @@ export default function LegalObject() {
             className="
               grid h-28 w-28 place-items-center
               rounded-full
-              border border-accent/35
-              bg-black/[0.06]
-              shadow-[0_20px_50px_rgba(0,0,0,0.14)]
+              border border-accent/25
+              bg-black/[0.03]
+              shadow-[0_20px_50px_rgba(0,0,0,0.10)]
               backdrop-blur-[2px]
               sm:h-36 sm:w-36
             "
