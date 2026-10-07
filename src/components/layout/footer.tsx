@@ -38,20 +38,22 @@ const serviceLinks = [
 
 const offices = [
   {
-    label: "Mombasa",
-    address: "David Kayanda Rd, Mombasa, Kenya",
-    href:
-      "https://www.google.com/maps/search/?api=1&query=David+Kayanda+Rd%2C+Mombasa%2C+Kenya",
+    label: "Mombasa · Head Office",
+    address: "Zakay Plaza, 2nd Floor, Kizingo Shopping Centre, Taher Sheikh Said Road, P.O. Box 99426-80107, Mombasa.",
+    phone: "254-41-2314937 / 2314886 · 0720 988571 · 0735 830584",
+    href: "https://www.google.com/maps/search/?api=1&query=Zakay+Plaza%2C+Kizingo+Shopping+Centre%2C+Taher+Sheikh+Said+Road%2C+Mombasa%2C+Kenya",
   },
   {
-    label: "Kilifi",
-    address:
-      "Lengai House, Kenyatta Street, Opposite Kibiru Emporium, P. O. Box 855, Kilifi.",
+    label: "Kilifi · Branch",
+    address: "Suite No. 7, Kilifi Shopping Arcade · P.O. Box 855, Kilifi.",
+    phone: "020-2021788 · 0735 830575 · 0723 963919",
+    href: "https://www.google.com/maps/search/?api=1&query=Kilifi+Shopping+Arcade%2C+Kilifi%2C+Kenya",
   },
   {
-    label: "Malindi",
-    address:
-      "Ruby Plaza, Vasco Da Gama Road, Next to Malindi Law Court, Malindi.",
+    label: "Malindi · Branch",
+    address: "Ruby Plaza, Vasco da Gama Road, next to Malindi Law Courts, Malindi.",
+    phone: "0703 937485",
+    href: "https://www.google.com/maps/search/?api=1&query=Ruby+Plaza%2C+Vasco+da+Gama+Road%2C+Malindi%2C+Kenya",
   },
 ];
 
@@ -86,8 +88,7 @@ export default function Footer() {
             </h3>
 
             <p className="max-w-md text-sm leading-7 text-primary-foreground/70">
-              A full-service law firm serving clients across Kenya, with
-              expertise across major areas of legal practice.
+              A full-service coastal law firm serving corporate and private clients across Mombasa, Kilifi and Malindi since 1985.
             </p>
 
             <div className="mt-6 flex items-center gap-3">
@@ -236,6 +237,7 @@ export default function Footer() {
                     ) : (
                       <p>{office.address}</p>
                     )}
+                    <p className="mt-1 text-xs text-primary-foreground/50">{office.phone}</p>
                   </div>
                 </div>
               ))}
@@ -292,7 +294,7 @@ export default function Footer() {
           <p>
             Designed &amp; developed by{" "}
             <a
-              href="https://hempon-group.vercel.app/"
+              href="https://hempongroup.co.ke/"
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium text-primary-foreground/70 transition-colors hover:text-accent"

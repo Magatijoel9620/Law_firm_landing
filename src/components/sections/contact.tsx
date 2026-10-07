@@ -52,8 +52,29 @@ const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
   "Hello Kanyi J. & Company Advocates, I would like to make an enquiry."
 )}`;
 
-const mapUrl =
-  "https://www.google.com/maps/search/?api=1&query=David+Kayanda+Rd%2C+Mombasa%2C+Kenya";
+const offices = [
+  {
+    label: "Mombasa · Head Office",
+    address: "Zakay Plaza, 2nd Floor, Kizingo Shopping Centre, Taher Sheikh Said Road, P.O. Box 99426-80107, Mombasa.",
+    phone: "254-41-2314937 / 2314886 · 0720 988571 · 0735 830584",
+    email: "jkanyi@swiftmombasa.com · info@kanyij-advocates.co.ke",
+    query: "Zakay+Plaza%2C+Kizingo+Shopping+Centre%2C+Taher+Sheikh+Said+Road%2C+Mombasa%2C+Kenya",
+  },
+  {
+    label: "Kilifi · Branch",
+    address: "Suite No. 7, Kilifi Shopping Arcade · P.O. Box 855, Kilifi.",
+    phone: "020-2021788 · 0735 830575 · 0723 963919",
+    email: "jkanyi@swiftmombasa.com",
+    query: "Kilifi+Shopping+Arcade%2C+Kilifi%2C+Kenya",
+  },
+  {
+    label: "Malindi · Branch",
+    address: "Ruby Plaza, Vasco da Gama Road, next to Malindi Law Courts, Malindi.",
+    phone: "0703 937485",
+    email: "kanyijmld@gmail.com",
+    query: "Ruby+Plaza%2C+Vasco+da+Gama+Road%2C+Malindi%2C+Kenya",
+  },
+];
 
 export default function Contact() {
   const { toast } = useToast();
@@ -229,46 +250,29 @@ export default function Contact() {
                 </a>
               </div>
 
-              {/* Location */}
-              <div className="overflow-hidden rounded-2xl border border-border/60 bg-background/70 shadow-sm backdrop-blur">
-                <div className="flex items-start gap-4 p-5">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
-                    <MapPin className="h-5 w-5" />
+              {/* Offices & map */}
+              <div className="space-y-4">
+                {offices.map((office, index) => (
+                  <div key={office.label} className="rounded-2xl border border-border/60 bg-background/70 p-5 shadow-sm backdrop-blur">
+                    <div className="flex items-start gap-4">
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                        <MapPin className="h-5 w-5" />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-sm font-semibold uppercase tracking-[.12em] text-accent">{office.label}</p>
+                        <p className="mt-1 font-semibold leading-6 text-foreground">{office.address}</p>
+                        <p className="mt-2 text-sm leading-6 text-muted-foreground">{office.phone}</p>
+                        <p className="text-sm leading-6 text-muted-foreground">{office.email}</p>
+                        <a href={`https://www.google.com/maps/search/?api=1&query=${office.query}`} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline">Get directions <ExternalLink className="h-3.5 w-3.5" /></a>
+                      </div>
+                    </div>
+                    {index === 0 && (
+                      <div className="mt-5 h-64 overflow-hidden rounded-xl sm:h-72">
+                        <iframe src="https://www.google.com/maps?q=Zakay+Plaza,+Kizingo+Shopping+Centre,+Taher+Sheikh+Said+Road,+Mombasa,+Kenya&output=embed" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Kanyi J. & Company Advocates head office at Zakay Plaza, Mombasa" />
+                      </div>
+                    )}
                   </div>
-
-                  <div>
-                    <p className="text-sm font-medium text-muted-foreground">
-                      Office location
-                    </p>
-
-                    <p className="mt-1 font-semibold text-foreground">
-                      David Kayanda Rd, Mombasa, Kenya
-                    </p>
-
-                    <a
-                      href={mapUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
-                    >
-                      Get directions
-                      <ExternalLink className="h-3.5 w-3.5" />
-                    </a>
-                  </div>
-                </div>
-
-                <div className="h-64 w-full sm:h-72">
-                  <iframe
-                    src="https://www.google.com/maps?q=David+Kayanda+Rd,+Mombasa,+Kenya&output=embed"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="Kanyi J. & Company Advocates office location"
-                  />
-                </div>
+                ))}
               </div>
             </div>
           </Reveal>

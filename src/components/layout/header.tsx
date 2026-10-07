@@ -41,8 +41,9 @@ const navLinks = [
     label: "Portal",
     external: true,
   },
-  { href: "/#contact", label: "Contact" },
 ];
+
+const mobileNavLinks = [...navLinks, { href: "/#contact", label: "Contact" }];
 
 function Logo() {
   const { resolvedTheme } = useTheme();
@@ -171,10 +172,10 @@ export default function Header() {
                         : undefined
                     }
                     className={cn(
-                      "relative flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors",
-                      "hover:bg-accent/10 hover:text-primary",
-                      link.label === "Contact" &&
-                        "bg-primary text-primary-foreground hover:bg-primary/90 hover:text-primary-foreground"
+                      "relative flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium text-foreground/70 transition-all",
+                      "hover:bg-accent/10 hover:text-accent",
+                      link.label === "Portal" &&
+                        "bg-accent/10 text-accent"
                     )}
                   >
                     {link.label}
@@ -186,18 +187,6 @@ export default function Header() {
                 </motion.div>
               ))}
 
-              {/* Desktop WhatsApp CTA */}
-              <Magnetic strength={0.12}>
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="ml-2 inline-flex h-10 items-center gap-2 rounded-full bg-accent px-5 text-sm font-semibold text-accent-foreground shadow-md shadow-accent/20 transition-all hover:-translate-y-0.5 hover:bg-accent/90 hover:shadow-lg"
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  WhatsApp
-                </a>
-              </Magnetic>
             </nav>
 
             {/* Mobile */}
@@ -240,7 +229,7 @@ export default function Header() {
                     </div>
 
                     <nav className="flex flex-col p-6">
-                      {navLinks.map((link) => (
+                      {mobileNavLinks.map((link) => (
                         <Link
                           key={link.href}
                           href={link.href}
@@ -292,8 +281,30 @@ export default function Header() {
               </Sheet>
             </div>
 
-            <div className="hidden xl:block">
-              <ThemeToggle />
+            {/* Desktop actions: contact + WhatsApp + theme, kept together for a cleaner control cluster. */}
+            <div className="hidden xl:flex items-center gap-2">
+              <Magnetic strength={0.08}>
+                <Link
+                  href="/#contact"
+                  className="inline-flex h-10 items-center rounded-full border border-border/70 bg-background/35 px-4 text-sm font-semibold text-foreground backdrop-blur transition-all hover:border-accent/50 hover:bg-accent/10 hover:text-accent"
+                >
+                  Contact
+                </Link>
+              </Magnetic>
+              <Magnetic strength={0.12}>
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-10 items-center gap-2 rounded-full bg-accent px-4 text-sm font-semibold text-accent-foreground shadow-md shadow-accent/20 transition-all hover:-translate-y-0.5 hover:bg-accent/90 hover:shadow-lg"
+                >
+                  <MessageCircle className="h-4 w-4" />
+                  WhatsApp
+                </a>
+              </Magnetic>
+              <div className="ml-1 border-l border-border/50 pl-2">
+                <ThemeToggle />
+              </div>
             </div>
           </div>
         </div>

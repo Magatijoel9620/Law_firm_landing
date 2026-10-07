@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Kanyi J & Company Advocates is a top-tier law firm based in Mombasa, Kenya.",
+    "Kanyi J. & Company Advocates is a Kenyan coastal law firm serving corporate and private clients from Mombasa, Kilifi and Malindi since 1985.",
   
 };
 
