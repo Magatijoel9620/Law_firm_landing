@@ -94,7 +94,7 @@ export default function Contact() {
   try {
     setIsSubmitting(true);
 
-    const res = await fetch("/contact.php", {
+    const res = await fetch("https://form.kanyij-advocates.co.ke/contact.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
