@@ -271,7 +271,7 @@ export default function Contact() {
                     </div>
                     {index === 0 && (
                       <div className="mt-5 h-64 overflow-hidden rounded-xl sm:h-72">
-                        <iframe src="https://www.google.com/maps?q=Zakay+Plaza,+Kizingo+Shopping+Centre,+Taher+Sheikh+Said+Road,+Mombasa,+Kenya&output=embed" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Kanyi J. & Company Advocates head office at Zakay Plaza, Mombasa" />
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d248.73558524701153!2d39.67822724322598!3d-4.067361243113952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNMKwMDQnMDIuNSJTIDM5wrA0MCc0MS41IkU!5e0!3m2!1sen!2ske!4v1791380917245!5m2!1sen!2ske" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="strict-origin-when-cross-origin" title="Kanyi J. & Company Advocates head office at Zakay Plaza, Mombasa" />
                       </div>
                     )}
                   </div>
