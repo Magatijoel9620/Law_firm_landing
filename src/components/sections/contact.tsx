@@ -90,45 +90,48 @@ export default function Contact() {
     },
   });
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
-    try {
-      setIsSubmitting(true);
+ async function onSubmit(values: z.infer<typeof formSchema>) {
+  try {
+    setIsSubmitting(true);
 
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
-      });
+    const res = await fetch("/contact.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    });
 
-      if (!res.ok) {
-        toast({
-          title: "Unable to send message",
-          description: "Please try again or contact us directly.",
-          variant: "destructive",
-        });
-        return;
-      }
+    const result = await res.json();
 
+    if (!res.ok || !result.success) {
       toast({
-        title: "Message sent",
+        title: "Unable to send message",
         description:
-          "Thank you for reaching out. We will get back to you shortly.",
-      });
-
-      form.reset();
-    } catch {
-      toast({
-        title: "Connection error",
-        description:
-          "We couldn't connect to the server. Please try again or contact us directly.",
+          result.error || "Please try again or contact us directly.",
         variant: "destructive",
       });
-    } finally {
-      setIsSubmitting(false);
+      return;
     }
+
+    toast({
+      title: "Message sent",
+      description:
+        "Thank you for reaching out. We will get back to you shortly.",
+    });
+
+    form.reset();
+  } catch {
+    toast({
+      title: "Connection error",
+      description:
+        "We couldn't connect to the contact server. Please try again or contact us directly.",
+      variant: "destructive",
+    });
+  } finally {
+    setIsSubmitting(false);
   }
+}
 
   return (
     <section
