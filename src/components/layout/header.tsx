@@ -201,6 +201,8 @@ export default function Header() {
                 <MessageCircle className="h-5 w-5" />
               </a>
 
+              <ThemeToggle />
+
               <Sheet open={isOpen} onOpenChange={setIsOpen}>
                 <SheetTrigger asChild>
                   <Button
@@ -271,10 +273,6 @@ export default function Header() {
                         <Phone className="h-4 w-4" />
                         +254 720 988571
                       </a>
-
-                      <div className="flex justify-center pt-2">
-                        <ThemeToggle />
-                      </div>
                     </div>
                   </div>
                 </SheetContent>
