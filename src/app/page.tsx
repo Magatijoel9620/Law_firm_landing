@@ -17,6 +17,18 @@ const PracticeAreas = dynamic(
   () => import("@/components/sections/practice-areas"),
   { loading: () => <Skeleton className="h-96 w-full" /> },
 );
+const ServiceFinder = dynamic(
+  () => import("@/components/sections/service-finder"),
+  { loading: () => <Skeleton className="h-[700px] w-full" /> },
+);
+const ConsultationRequest = dynamic(
+  () => import("@/components/sections/consultation-request"),
+  { loading: () => <Skeleton className="h-[800px] w-full" /> },
+);
+const FAQ = dynamic(
+  () => import("@/components/sections/faq"),
+  { loading: () => <Skeleton className="h-[600px] w-full" /> },
+);
 const Stats = dynamic(() => import("@/components/sections/stats"), {
   loading: () => <Skeleton className="h-48 w-full" />,
 });
@@ -35,8 +47,10 @@ import Footer from "@/components/layout/footer";
 import Header from "@/components/layout/header";
 import BackToTopButton from "@/components/layout/back-to-top-button";
 import { MessageCircle } from "lucide-react";
+import { buildWhatsAppUrl } from "@/lib/firm-data";
 
 export default function Home() {
+  const whatsappUrl = buildWhatsAppUrl({ source: "homepage" });
   return (
     <div className="relative flex min-h-screen flex-col bg-background">
       <LenisProvider />
@@ -47,16 +61,21 @@ export default function Home() {
         <Hero />
         <div className="space-y-16 sm:space-y-24">
           <FirmHistory />
+          <ServiceFinder />
           <PracticeAreas />
+          <ConsultationRequest />
           <Stats />
           <AttorneyProfiles />
           <Partners />
           <Contact />
+          <FAQ />
         </div>
       </main>
       <Footer />
       <a
-        href="https://wa.me/254735830584?text=Hello%20Kanyi%20J.%20%26%20Company%20Advocates%2C%20I%20would%20like%20to%20make%20an%20enquiry."
+        href={whatsappUrl}
+        data-conversion-event="whatsapp_clicked"
+        data-conversion-source="homepage-floating"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat with Kanyi J. & Company Advocates on WhatsApp"

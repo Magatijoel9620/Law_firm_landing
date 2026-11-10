@@ -6,82 +6,11 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
-import {
-  Building,
-  Landmark,
-  Briefcase,
-  Banknote,
-  Users,
-  GitBranch,
-  ShieldCheck,
-  FileText,
-  PiggyBank,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { practiceAreas } from "@/lib/firm-data";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { Reveal, TiltCard } from "@/components/interactive/InteractionLayer";
-
-interface PracticeArea {
-  title: string;
-  description: string;
-  icon: LucideIcon;
-}
-const practiceAreas: PracticeArea[] = [
-  {
-    title: "Corporate & Commercial Law",
-    description:
-      "Expert advice on business structures, contracts, and corporate governance. We handle incorporation, partnerships, share transfers, and more.",
-    icon: Briefcase,
-  },
-  {
-    title: "Arbitration",
-    description:
-      "Focused on alternative dispute resolution to expedite conflict resolution while preserving important relationships.",
-    icon: Users,
-  },
-  {
-    title: "Banking & Finance Law",
-    description:
-      "Advising financial institutions and borrowers on securities, loan agreements, and defending against claims with great success.",
-    icon: Banknote,
-  },
-  {
-    title: "Real Estate & Conveyancing",
-    description:
-      "Handling all aspects of property transactions, including sales, transfers, leases, charges, and general property advice.",
-    icon: Building,
-  },
-  {
-    title: "Litigation",
-    description:
-      "Our effective litigation team uses experience and trusted judgment to develop customized strategies for every dispute.",
-    icon: Landmark,
-  },
-  {
-    title: "Insurance Law",
-    description:
-      "The firm has considerable experience in insurance law, including providing advice on insurance policies and claims.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Insolvency Law",
-    description:
-      "Our team has advised on some of the largest and most complicated restructurings and insolvencies in the country.",
-    icon: GitBranch,
-  },
-  {
-    title: "Taxation Services",
-    description:
-      "Committed to improving client comprehension and compliance with tax regulations, and the enforcement of their rights.",
-    icon: FileText,
-  },
-  {
-    title: "Pension, Trusts & Retirement Benefits",
-    description:
-      "The Firm has successfully defended claims arising under the Retirement Benefits Act.",
-    icon: PiggyBank,
-  },
-];
 
 export default function PracticeAreas() {
   return (
@@ -124,6 +53,9 @@ export default function PracticeAreas() {
                   <CardDescription className="pt-3 text-sm leading-6 text-muted-foreground">
                     {area.description}
                   </CardDescription>
+                  <Link href={`/services/${area.slug}`} className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-accent transition-colors hover:text-accent/80">
+                    Explore service <ArrowUpRight className="h-4 w-4" />
+                  </Link>
                 </CardHeader>
               </Card>
             </TiltCard>

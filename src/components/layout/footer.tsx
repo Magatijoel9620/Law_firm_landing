@@ -3,10 +3,8 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { buildWhatsAppUrl, firmContact, offices, practiceAreas } from "@/lib/firm-data";
 import {
-  Linkedin,
-  Twitter,
-  Facebook,
   MapPin,
   Phone,
   Mail,
@@ -14,48 +12,16 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 
-const WHATSAPP_NUMBER = "254735830584";
-
-const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-  "Hello Kanyi J. & Company Advocates, I would like to make an enquiry."
-)}`;
+const whatsappUrl = buildWhatsAppUrl({ source: "website footer" });
 
 const quickLinks = [
-  { href: "/#practice-areas", label: "Our Services" },
+  { href: "/#service-finder", label: "Find a Service" },
   { href: "/#history", label: "About Us" },
   { href: "/#attorneys", label: "Our Team" },
   { href: "/#contact", label: "Contact Us" },
+  { href: "/insights", label: "Legal Insights & FAQs" },
 ];
 
-const serviceLinks = [
-  { href: "/#practice-areas", label: "Corporate & Commercial Law" },
-  { href: "/#practice-areas", label: "Banking & Finance Law" },
-  { href: "/#practice-areas", label: "Property Law" },
-  { href: "/#practice-areas", label: "Insurance Law" },
-  { href: "/#practice-areas", label: "Tax & Audit Law" },
-  { href: "/#practice-areas", label: "Insolvency Law" },
-];
-
-const offices = [
-  {
-    label: "Mombasa · Head Office",
-    address: "Zakay Plaza, 2nd Floor, Kizingo Shopping Centre, Taher Sheikh Said Road, P.O. Box 99426-80107, Mombasa.",
-    phone: "254-41-2314937 / 2314886 · 0720 988571 · 0735 830584",
-    href: "https://www.google.com/maps/search/?api=1&query=Zakay+Plaza%2C+Kizingo+Shopping+Centre%2C+Taher+Sheikh+Said+Road%2C+Mombasa%2C+Kenya",
-  },
-  {
-    label: "Kilifi · Branch",
-    address: "Suite No. 7, Kilifi Shopping Arcade · P.O. Box 855, Kilifi.",
-    phone: "020-2021788 · 0735 830575 · 0723 963919",
-    href: "https://www.google.com/maps/search/?api=1&query=Kilifi+Shopping+Arcade%2C+Kilifi%2C+Kenya",
-  },
-  {
-    label: "Malindi · Branch",
-    address: "Ruby Plaza, Vasco da Gama Road, next to Malindi Law Courts, Malindi.",
-    phone: "0703 937485",
-    href: "https://www.google.com/maps/search/?api=1&query=Ruby+Plaza%2C+Vasco+da+Gama+Road%2C+Malindi%2C+Kenya",
-  },
-];
 
 export default function Footer() {
   const [currentYear, setCurrentYear] = useState(
@@ -93,31 +59,9 @@ export default function Footer() {
 
             <div className="mt-6 flex items-center gap-3">
               <a
-                href="#"
-                aria-label="LinkedIn"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-primary-foreground/15 transition-all hover:border-accent hover:bg-accent hover:text-accent-foreground"
-              >
-                <Linkedin className="h-4 w-4" />
-              </a>
-
-              <a
-                href="#"
-                aria-label="Twitter"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-primary-foreground/15 transition-all hover:border-accent hover:bg-accent hover:text-accent-foreground"
-              >
-                <Twitter className="h-4 w-4" />
-              </a>
-
-              <a
-                href="#"
-                aria-label="Facebook"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-primary-foreground/15 transition-all hover:border-accent hover:bg-accent hover:text-accent-foreground"
-              >
-                <Facebook className="h-4 w-4" />
-              </a>
-
-              <a
                 href={whatsappUrl}
+                data-conversion-event="whatsapp_clicked"
+                data-conversion-source="footer"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
@@ -156,13 +100,13 @@ export default function Footer() {
             </h3>
 
             <ul className="space-y-3">
-              {serviceLinks.map((link) => (
-                <li key={link.label}>
+              {practiceAreas.map((area) => (
+                <li key={area.slug}>
                   <Link
-                    href={link.href}
+                    href={`/services/${area.slug}`}
                     className="group inline-flex items-start gap-1 text-sm leading-5 text-primary-foreground/70 transition-colors hover:text-accent"
                   >
-                    {link.label}
+                    {area.title}
                     <ArrowUpRight className="mt-0.5 h-3.5 w-3.5 shrink-0 opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100" />
                   </Link>
                 </li>
@@ -178,25 +122,31 @@ export default function Footer() {
 
             <div className="space-y-4">
               <a
-                href="mailto:info@kanyij-advocates.co.ke"
+                href={`mailto:${firmContact.email}`}
+                data-conversion-event="email_clicked"
+                data-conversion-source="footer"
                 className="flex items-start gap-3 text-sm text-primary-foreground/70 transition-colors hover:text-accent"
               >
                 <Mail className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
                 <span className="break-all">
-                  info@kanyij-advocates.co.ke
+                  {firmContact.email}
                 </span>
               </a>
 
               <a
-                href="tel:+254720988571"
+                href={`tel:${firmContact.phoneHref}`}
+                data-conversion-event="phone_clicked"
+                data-conversion-source="footer"
                 className="flex items-start gap-3 text-sm text-primary-foreground/70 transition-colors hover:text-accent"
               >
                 <Phone className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
-                <span>+254 720 988571</span>
+                <span>{firmContact.phoneDisplay}</span>
               </a>
 
               <a
                 href={whatsappUrl}
+                data-conversion-event="whatsapp_clicked"
+                data-conversion-source="footer"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-start gap-3 text-sm text-primary-foreground/70 transition-colors hover:text-accent"
@@ -207,7 +157,7 @@ export default function Footer() {
                     WhatsApp
                   </strong>
                   <br />
-                  +254 735 830584
+                  {firmContact.whatsappDisplay}
                 </span>
               </a>
             </div>
@@ -225,18 +175,12 @@ export default function Footer() {
                       {office.label}
                     </p>
 
-                    {office.href ? (
-                      <a
-                        href={office.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="transition-colors hover:text-accent"
-                      >
-                        {office.address}
-                      </a>
-                    ) : (
-                      <p>{office.address}</p>
-                    )}
+                    <Link
+                      href={`/offices/${office.slug}`}
+                      className="transition-colors hover:text-accent"
+                    >
+                      {office.address}
+                    </Link>
                     <p className="mt-1 text-xs text-primary-foreground/50">{office.phone}</p>
                   </div>
                 </div>
@@ -273,6 +217,8 @@ export default function Footer() {
 
               <a
                 href={whatsappUrl}
+                data-conversion-event="whatsapp_clicked"
+                data-conversion-source="footer"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-accent-foreground shadow-lg shadow-accent/20 transition-all hover:-translate-y-0.5 hover:bg-accent/90"

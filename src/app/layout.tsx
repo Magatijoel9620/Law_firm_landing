@@ -3,6 +3,7 @@ import './globals.css'; //added a declaration file for css imports in globals.d.
 import { Toaster } from '@/components/ui/toaster';
 import { Alegreya, PT_Sans } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
+import ConversionTracker from '@/components/analytics/conversion-tracker';
 
 const alegreya = Alegreya({
   subsets: ['latin'],
@@ -42,6 +43,7 @@ export default function RootLayout({
           defaultTheme="light"
           disableTransitionOnChange
         >
+          <ConversionTracker />
           {children}
           <Toaster />
         </ThemeProvider>

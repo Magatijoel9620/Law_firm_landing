@@ -24,18 +24,16 @@ import {
 import { motion } from "framer-motion";
 import { ThemeToggle } from "../theme-toggle";
 import { useTheme } from "next-themes";
+import { buildWhatsAppUrl, firmContact } from "@/lib/firm-data";
 
-const WHATSAPP_NUMBER = "254735830584";
-
-const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-  "Hello Kanyi J. & Company Advocates, I would like to make an enquiry."
-)}`;
+const whatsappUrl = buildWhatsAppUrl({ source: "website navigation" });
 
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/#history", label: "About Us" },
-  { href: "/#practice-areas", label: "Services" },
+  { href: "/#service-finder", label: "Find a Service" },
   { href: "/#attorneys", label: "Team" },
+  { href: "/insights", label: "Insights" },
   {
     href: "https://kjc.wakilicms.com/",
     label: "Portal",
@@ -193,6 +191,8 @@ export default function Header() {
             <div className="flex items-center gap-2 xl:hidden">
               <a
                 href={whatsappUrl}
+                data-conversion-event="whatsapp_clicked"
+                data-conversion-source="header"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Chat with us on WhatsApp"
@@ -258,6 +258,8 @@ export default function Header() {
                     <div className="mt-auto space-y-4 p-6">
                       <a
                         href={whatsappUrl}
+                        data-conversion-event="whatsapp_clicked"
+                        data-conversion-source="mobile-header"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex w-full items-center justify-center gap-2 rounded-full bg-accent px-5 py-3 font-semibold text-accent-foreground shadow-lg shadow-accent/20"
@@ -267,11 +269,13 @@ export default function Header() {
                       </a>
 
                       <a
-                        href="tel:+254720988571"
+                        href={`tel:${firmContact.phoneHref}`}
+                        data-conversion-event="phone_clicked"
+                        data-conversion-source="mobile-header"
                         className="flex w-full items-center justify-center gap-2 rounded-full border border-border px-5 py-3 font-medium transition-colors hover:border-accent hover:text-accent"
                       >
                         <Phone className="h-4 w-4" />
-                        +254 720 988571
+                        {firmContact.phoneDisplay}
                       </a>
                     </div>
                   </div>
@@ -292,6 +296,8 @@ export default function Header() {
               <Magnetic strength={0.12}>
                 <a
                   href={whatsappUrl}
+                  data-conversion-event="whatsapp_clicked"
+                  data-conversion-source="desktop-header"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex h-10 items-center gap-2 rounded-full bg-accent px-4 text-sm font-semibold text-accent-foreground shadow-md shadow-accent/20 transition-all hover:-translate-y-0.5 hover:bg-accent/90 hover:shadow-lg"
