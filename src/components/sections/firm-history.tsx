@@ -10,12 +10,15 @@ import {
   Download,
   ArrowUpRight,
   Building2,
-  MapPin,
+  Landmark,
+  Ship,
+  ChevronDown,
 } from "lucide-react";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
+import { useRef, useState } from "react";
 import {
   Reveal,
   TiltCard,
@@ -25,27 +28,43 @@ import {
 const timelineEvents = [
   {
     year: "1985",
-    title: "Firm Founded",
+    title: "A practice begins in Mombasa",
+    category: "The beginning",
+    icon: Landmark,
     description:
-      "The firm was established in Mombasa as J. V. Juma & Company Advocates by Mr. J. V. Juma, operating as a sole proprietorship.",
+      "Kanyi's story begins with the establishment of J. V. Juma & Company Advocates in Mombasa by Mr. J. V. Juma. The practice began as a sole proprietorship, laying the foundation for the firm that would later carry the Kanyi name.",
+    detail:
+      "The firm's roots are firmly coastal. Mombasa was the starting point of a legal practice that would continue to serve clients in the region through the decades that followed.",
   },
   {
     year: "1996",
-    title: "A New Chapter",
+    title: "A new chapter under the Kanyi name",
+    category: "A change in leadership",
+    icon: Scale,
     description:
-      "Following Mr. J. V. Juma's elevation to the High Court, Mr. Joseph Karanja Kanyi took over the practice and it was renamed Kanyi J. & Company Advocates.",
+      "Following Mr. J. V. Juma's elevation to the High Court, Mr. Joseph Karanja Kanyi took over the practice. It was then renamed Kanyi J. & Company Advocates — the name by which the firm is known today.",
+    detail:
+      "This transition marked an important chapter in the firm's history: continuity of the established practice, alongside a new chapter of leadership under Mr. Kanyi.",
   },
   {
     year: "2010s",
-    title: "Maritime Expansion",
+    title: "Growing with the coast's legal and commercial needs",
+    category: "Broader reach and practice",
+    icon: Ship,
     description:
-      "The practice expanded into specialised Maritime Law services, reflecting Mombasa's growing importance as a regional shipping and port hub, alongside branch growth in Kilifi and Malindi.",
+      "The practice developed specialised Maritime Law services, reflecting the importance of shipping and port activity to the Mombasa region. The firm also established a presence beyond Mombasa, with branch offices in Kilifi and Malindi.",
+    detail:
+      "The firm's coastal presence connects its Mombasa headquarters with clients and communities in Kilifi and Malindi. Its published practice areas also reflect the range of legal matters encountered by businesses and individuals in the region.",
   },
   {
     year: "Today",
-    title: "A Coastal Legal Practice",
+    title: "A coastal practice serving a broad client base",
+    category: "The firm today",
+    icon: Building2,
     description:
-      "Kanyi J. & Company Advocates serves corporate and private clients across the coast with experience, transparency, integrity and a broad full-service legal practice.",
+      "Today, Kanyi J. & Company Advocates serves corporate and private clients from its offices in Mombasa, Kilifi and Malindi. Its work spans the firm's published practice areas, with experience, transparency and integrity at the heart of its stated approach.",
+    detail:
+      "The firm continues to bring its people, experience and range of services together to assist clients with different legal needs. Explore the practice areas and office pages to learn more about the services and locations currently listed on this website.",
   },
 ];
 
@@ -119,14 +138,13 @@ export default function FirmHistory() {
               Four decades on the Kenyan coast.
             </h2>
             <p className="mt-6 text-lg font-semibold leading-8 text-primary/80">
-              A first-rate coastal law firm serving clients since 1985.
+              A coastal law practice with roots in Mombasa and a history dating back to 1985.
             </p>
             <p className="mt-5 leading-8 text-muted-foreground">
-              Kanyi J. &amp; Company Advocates is a top-tier Kenyan law firm
-              headquartered in Mombasa, with branch offices in Kilifi and
-              Malindi. The firm traces its history to 1985 and has grown into a
-              full-service practice serving corporate and private clients with
-              experience, transparency and integrity.
+              Based in Mombasa, with branch offices in Kilifi and Malindi, Kanyi J. &amp;
+              Company Advocates serves both corporate and private clients. The
+              practice traces its roots to 1985 and has developed across the
+              Kenyan coast over the years.
             </p>
             <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-2">
               {highlights.map((item) => (
@@ -161,7 +179,7 @@ export default function FirmHistory() {
                   Firm Profile · 2026
                 </div>
                 <h3 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">
-                  Discover Kanyi J. &amp; Company Advocates.
+                  Get to know Kanyi J. &amp; Company Advocates.
                 </h3>
                 <p className="mt-3 max-w-2xl text-sm leading-7 text-primary-foreground/65 sm:text-base">
                   Explore our history, purpose, practice areas, leadership,
@@ -283,44 +301,135 @@ export default function FirmHistory() {
             Our legacy.
           </h2>
           <p className="mt-5 text-lg leading-8 text-muted-foreground">
-            Over four decades of legal excellence and unwavering commitment to
-            justice.
+            A history that began in Mombasa and continues to shape the way we serve clients across the coast.
           </p>
         </Reveal>
-        <div className="relative mx-auto max-w-5xl">
-          <div className="absolute left-4 top-0 h-full w-px bg-border md:left-1/2" />
-          {timelineEvents.map((event, index) => (
-            <Reveal
-              key={event.year}
-              delay={index * 0.05}
-              className={`relative mb-8 pl-10 md:w-1/2 md:pl-0 ${index % 2 ? "md:ml-auto md:pl-10" : "md:pr-10"}`}
-            >
-              <div
-                className={`absolute left-0 top-7 flex h-8 w-8 items-center justify-center rounded-full border border-accent/40 bg-background text-accent md:left-auto md:right-[-16px] md:top-7 ${index % 2 ? "md:!left-[-16px] md:!right-auto" : ""}`}
-              >
-                <Scale className="h-3.5 w-3.5" />
-              </div>
-              <Card className="border-border/60 bg-card/80 shadow-sm transition-shadow hover:shadow-xl">
-                <CardHeader>
-                  <div className="flex items-start justify-between gap-4">
-                    <CardTitle className="font-headline text-xl text-primary">
-                      {event.title}
-                    </CardTitle>
-                    <span className="font-headline text-sm font-bold text-accent">
-                      {event.year}
-                    </span>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm leading-6 text-muted-foreground">
-                    {event.description}
-                  </p>
-                </CardContent>
-              </Card>
-            </Reveal>
-          ))}
-        </div>
+        <TimelineJourney />
       </div>
     </section>
+  );
+}
+
+
+/** A scroll-linked, keyboard-accessible timeline inspired by the VS Code activity rail. */
+function TimelineJourney() {
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 72%", "end 38%"],
+  });
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 90,
+    damping: 24,
+    mass: 0.35,
+  });
+  const progressScale = useTransform(smoothProgress, [0, 1], [0, 1]);
+
+  return (
+    <div ref={timelineRef} style={{ position: "relative" }} className="relative mx-auto max-w-5xl py-2">
+      {/* Track and scroll-linked active rail */}
+      <div aria-hidden="true" className="absolute bottom-5 left-4 top-5 w-px bg-border md:left-1/2">
+        <motion.div
+          className="absolute inset-x-0 top-0 h-full origin-top bg-gradient-to-b from-accent via-accent to-accent/70"
+          style={{ scaleY: reduceMotion ? 1 : progressScale }}
+        />
+      </div>
+
+      <ol className="relative space-y-8 md:space-y-10">
+        {timelineEvents.map((event, index) => (
+          <TimelineEvent key={event.year} event={event} index={index} />
+        ))}
+      </ol>
+      <p className="mt-10 pl-11 text-xs leading-6 text-muted-foreground md:pl-0 md:text-center">
+        A short account of the firm's published history. The dates and details shown reflect information supplied by the firm.
+      </p>
+    </div>
+  );
+}
+
+function TimelineEvent({
+  event,
+  index,
+}: {
+  event: (typeof timelineEvents)[number];
+  index: number;
+}) {
+  const [expanded, setExpanded] = useState(false);
+  const reduceMotion = useReducedMotion();
+  const Icon = event.icon;
+  const isRight = index % 2 === 1;
+
+  return (
+    <motion.li
+      initial={reduceMotion ? false : { opacity: 0, y: 34, x: isRight ? 18 : -18 }}
+      whileInView={{ opacity: 1, y: 0, x: 0 }}
+      viewport={{ once: true, amount: 0.28, margin: "0px 0px -8% 0px" }}
+      transition={reduceMotion ? { duration: 0 } : { duration: 0.72, delay: 0.04, ease: [0.22, 1, 0.36, 1] }}
+      className={`relative pl-11 md:w-1/2 md:pl-0 ${isRight ? "md:ml-auto md:pl-12" : "md:pr-12"}`}
+    >
+      <motion.span
+        aria-hidden="true"
+        initial={reduceMotion ? false : { scale: 0.72, opacity: 0.45 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        viewport={{ once: true, amount: 0.7 }}
+        transition={reduceMotion ? { duration: 0 } : { type: "spring", stiffness: 240, damping: 18, delay: 0.12 }}
+        className={`absolute left-0 top-7 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-accent/50 bg-background text-accent shadow-[0_0_0_5px_hsl(var(--background))] md:left-auto ${isRight ? "md:!left-[-18px]" : "md:right-[-18px]"}`}
+      >
+        <Icon className="h-4 w-4" />
+      </motion.span>
+
+      <motion.div
+        whileHover={reduceMotion ? undefined : { y: -5 }}
+        transition={reduceMotion ? { duration: 0 } : { type: "spring", stiffness: 260, damping: 22 }}
+        className="group"
+      >
+        <Card className="relative overflow-hidden border-border/70 bg-card/90 shadow-sm transition-[border-color,box-shadow,background-color] duration-500 group-hover:border-accent/45 group-hover:shadow-[0_18px_55px_rgba(15,23,42,.10)]">
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-1 origin-top scale-y-0 bg-accent transition-transform duration-500 group-hover:scale-y-100" />
+          <CardHeader className="pb-3">
+            <div className="mb-2 flex items-center justify-between gap-3">
+              <span className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[.2em] text-accent">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent" /> {event.category}
+              </span>
+              <span className="font-headline text-2xl font-bold tracking-tight text-accent sm:text-3xl">
+                {event.year}
+              </span>
+            </div>
+            <CardTitle className="max-w-xl font-headline text-xl leading-snug text-primary sm:text-2xl">
+              {event.title}
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="pt-0">
+            <p className="text-sm leading-7 text-muted-foreground sm:text-[15px]">
+              {event.description}
+            </p>
+            <motion.div
+              id={`timeline-detail-${event.year.toLowerCase()}`}
+              initial={false}
+              animate={{ height: expanded ? "auto" : 0, opacity: expanded ? 1 : 0 }}
+              transition={reduceMotion ? { duration: 0 } : { duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+              className="overflow-hidden"
+              aria-hidden={!expanded}
+            >
+              <p className="border-t border-border/70 mt-4 pt-4 text-sm leading-7 text-muted-foreground">
+                {event.detail}
+              </p>
+            </motion.div>
+            <button
+              type="button"
+              aria-expanded={expanded}
+              aria-controls={`timeline-detail-${event.year.toLowerCase()}`}
+              onClick={() => setExpanded((value) => !value)}
+              className="mt-5 inline-flex min-h-10 items-center gap-2 rounded-full border border-accent/25 px-4 py-2 text-xs font-semibold text-primary transition-colors hover:border-accent/60 hover:bg-accent/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+            >
+              {expanded ? "Show less" : "Explore this milestone"}
+              <motion.span animate={{ rotate: expanded ? 180 : 0 }} transition={reduceMotion ? { duration: 0 } : { duration: 0.25 }}>
+                <ChevronDown className="h-3.5 w-3.5 text-accent" />
+              </motion.span>
+            </button>
+          </CardContent>
+        </Card>
+      </motion.div>
+    </motion.li>
   );
 }

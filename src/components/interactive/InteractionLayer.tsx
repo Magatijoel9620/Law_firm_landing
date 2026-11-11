@@ -31,10 +31,6 @@ export function InteractionLayer() {
     };
   }, [x, y]);
 
-  useEffect(() => {
-    document.documentElement.style.scrollBehavior = "smooth";
-    return () => { document.documentElement.style.scrollBehavior = ""; };
-  }, []);
 
   if (!enabled) return null;
 
@@ -84,7 +80,8 @@ export function Magnetic({ children, strength = 0.22, className = "" }: { childr
 export function Reveal({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   return (
     <motion.div
-      className={className}
+      className={`scroll-reveal ${className}`}
+      onViewportEnter={(entry) => { if (entry) entry.target.setAttribute("data-scroll-revealed", "true"); }}
       initial={{ opacity: 0, y: 34 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.16 }}

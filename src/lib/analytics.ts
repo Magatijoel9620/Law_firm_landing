@@ -13,10 +13,8 @@ export type ConversionContext = Record<string, string>;
 
 declare global {
   interface Window {
-    gtag?: (command: string, eventName: string, parameters?: ConversionContext) => void;
-    posthog?: {
-      capture: (eventName: string, properties?: ConversionContext) => void;
-    };
+    gtag?: (...args: unknown[]) => void;
+    __kanyiAnalyticsConsent?: boolean;
   }
 }
 
@@ -29,12 +27,13 @@ export function trackConversionEvent(
   eventName: ConversionEventName,
   context: ConversionContext = {},
 ) {
-  if (typeof window === "undefined") return;
+  if (typeof window === "undefined" || window.__kanyiAnalyticsConsent !== true) return;
 
   const safeContext = Object.fromEntries(
     Object.entries(context).filter(([key, value]) =>
       ["service", "office", "source"].includes(key) &&
       typeof value === "string" &&
+      value.trim().length > 0 &&
       value.length <= 120,
     ),
   );
@@ -46,5 +45,4 @@ export function trackConversionEvent(
   );
 
   window.gtag?.("event", eventName, safeContext);
-  window.posthog?.capture(eventName, safeContext);
 }

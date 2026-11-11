@@ -25,11 +25,13 @@ export default function PracticeAreas() {
             What we do
           </p>
           <h2 className="font-headline text-4xl font-bold tracking-tight text-primary sm:text-6xl">
-            Legal expertise with depth.
+            Legal support for the matters that matter to you.
           </h2>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
-            We provide a comprehensive range of legal services to meet the
-            diverse needs of our clients.
+            From business and property matters to disputes, finance and
+            taxation, explore the services offered by our team. If you are
+            unsure where your enquiry belongs, our Legal Service Finder can help
+            you get started.
           </p>
         </Reveal>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -53,7 +55,10 @@ export default function PracticeAreas() {
                   <CardDescription className="pt-3 text-sm leading-6 text-muted-foreground">
                     {area.description}
                   </CardDescription>
-                  <Link href={`/services/${area.slug}`} className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-accent transition-colors hover:text-accent/80">
+                  <Link
+                    href={`/services/${area.slug}`}
+                    className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-accent transition-colors hover:text-accent/80"
+                  >
                     Explore service <ArrowUpRight className="h-4 w-4" />
                   </Link>
                 </CardHeader>

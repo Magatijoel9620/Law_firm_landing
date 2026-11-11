@@ -23,6 +23,7 @@ export default function Hero() {
   return (
     <section
       ref={ref}
+      style={{ position: "relative" }}
       className="relative isolate min-h-[calc(100svh-80px)] overflow-hidden bg-[#101411] text-white"
     >
       <motion.div style={{ y: imageY }} className="absolute -inset-[9%]">
@@ -60,8 +61,8 @@ export default function Hero() {
               <span className="text-accent">Company Advocates.</span>
             </h1>
             <p className="mt-8 max-w-2xl text-base leading-7 text-white/70 sm:text-xl sm:leading-8">
-              A Top-Tier Law Firm in Mombasa, Kenya. Advocates, Commissioners
-              For Oaths &amp; Notaries Public.
+              A Mombasa-based law firm serving corporate and private clients.
+              Advocates, Commissioners for Oaths &amp; Notaries Public.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <Magnetic>
@@ -69,7 +70,7 @@ export default function Hero() {
                   href="#contact"
                   className="group inline-flex items-center gap-3 rounded-full bg-accent px-6 py-3.5 text-sm font-semibold text-accent-foreground shadow-[0_18px_50px_rgba(0,0,0,.25)] transition-transform hover:scale-[1.02]"
                 >
-                  Book Consultation{" "}
+                  Request a Consultation{" "}
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </Link>
               </Magnetic>
@@ -78,7 +79,7 @@ export default function Hero() {
                   href="#practice-areas"
                   className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/[0.06] px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-md transition-colors hover:bg-white/10"
                 >
-                  Explore Services
+                  Explore Practice Areas
                 </Link>
               </Magnetic>
             </div>

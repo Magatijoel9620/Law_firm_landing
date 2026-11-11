@@ -46,8 +46,7 @@ export default function ServiceFinder() {
             How can we assist you?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
-            Search for a legal service or describe the kind of matter you need
-            help with. We will point you towards the most relevant practice area.
+            Not sure which service fits? That is okay. Search using a few words about what is happening, and we will help you find the closest practice area.
           </p>
         </Reveal>
 
@@ -75,7 +74,7 @@ export default function ServiceFinder() {
             )}
           </div>
           <div className="mt-3 flex flex-wrap items-center justify-between gap-2 px-1 text-xs text-muted-foreground">
-            <span>{query.trim() ? `${results.length} ${results.length === 1 ? "practice area" : "practice areas"} found` : "Try a topic below or browse all practice areas"}</span>
+            <span>{query.trim() ? `${results.length} ${results.length === 1 ? "practice area" : "practice areas"} found` : "Start with one of these topics, or explore all our practice areas"}</span>
             <span>Search is a navigation aid, not legal advice.</span>
           </div>
           {!query.trim() && (
@@ -139,10 +138,10 @@ export default function ServiceFinder() {
         {query.trim() && results.length === 0 && (
           <div className="mx-auto mt-8 max-w-xl rounded-2xl border border-dashed border-border p-8 text-center">
             <h3 className="font-headline text-xl font-semibold text-primary">
-              No exact match found
+              We could not find an exact match just yet
             </h3>
             <p className="mt-2 text-sm leading-6 text-muted-foreground">
-              Try a broader term or contact the firm so the team can direct your enquiry.
+              Try a different word or two. If you are still unsure, send us a message in your own words and the team can help direct your enquiry.
             </p>
             <div className="mt-5 flex flex-wrap justify-center gap-3">
               <button

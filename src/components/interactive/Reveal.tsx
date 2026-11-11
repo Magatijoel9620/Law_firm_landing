@@ -15,11 +15,12 @@ export default function Reveal({
 }) {
   return (
     <motion.div
+      onViewportEnter={(entry) => { if (entry) entry.target.setAttribute("data-scroll-revealed", "true"); }}
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.12, margin: "0px 0px -8% 0px" }}
       transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={className}
+      className={`scroll-reveal ${className}`}
     >
       {children}
     </motion.div>

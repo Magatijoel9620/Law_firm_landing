@@ -86,7 +86,6 @@
 
 
 /* Interactive enhancement layer */
-html { scroll-behavior: auto; }
 body { overflow-x: hidden; }
 ::selection { background: hsl(var(--accent) / 0.22); color: hsl(var(--foreground)); }
 
@@ -122,4 +121,17 @@ section[id] { scroll-margin-top: 92px; }
 @media (hover: hover) {
   .interactive-image { transition: transform 900ms cubic-bezier(.22,1,.36,1), filter 700ms ease; }
   .interactive-image:hover { transform: scale(1.035); filter: saturate(1.05); }
+}
+
+
+/* Editorial heading reveals: restrained rise + soft focus as sections enter view. */
+@keyframes kanyi-heading-enter {
+  from { opacity: .35; transform: translate3d(0, 14px, 0); filter: blur(3px); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); filter: blur(0); }
+}
+.scroll-reveal[data-scroll-revealed="true"] :is(h1, h2, h3) {
+  animation: kanyi-heading-enter .72s cubic-bezier(.22, 1, .36, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal[data-scroll-revealed="true"] :is(h1, h2, h3) { animation: none !important; }
 }

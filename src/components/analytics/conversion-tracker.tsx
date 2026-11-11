@@ -8,6 +8,7 @@ const supportedEvents = new Set<ConversionEventName>([
   "service_detail_enquiry_clicked",
   "consultation_form_started",
   "consultation_request_submitted",
+  "general_enquiry_submitted",
   "whatsapp_clicked",
   "phone_clicked",
   "email_clicked",

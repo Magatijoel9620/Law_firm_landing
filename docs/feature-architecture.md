@@ -23,17 +23,17 @@ Evolve the existing Kanyi J. & Company Advocates website from a firm profile int
 - The nine currently published practice areas, their existing descriptions, stable URL slugs, search keywords and service-finder prompts.
 - The three currently published offices, including existing contact details and map destinations.
 
-Page components should consume these exports rather than define duplicate arrays or contact strings.
+Page components should consume these exports rather than define duplicate arrays or contact strings. Expanded service-page copy lives in `src/lib/service-content.ts`; firm-information articles live in `src/lib/editorial-content.ts`. Both editorial modules are grounded in the supplied website content and remain subject to firm approval.
 
 ## Planned routes and features
 
 | Feature | Route / location | Data and integration |
 |---|---|---|
 | Homepage service finder | `/#service-finder` | `practiceAreas` |
-| Practice area details | `/services/[slug]` | `practiceAreas` |
+| Practice area details | `/services/[slug]` | `practiceAreas` plus `serviceContent`; plain-language expanded descriptions and enquiry pointers |
 | Consultation request | `/#consultation` and homepage CTA | Existing PHP contact endpoint with structured optional fields |
 | General enquiry | `/#contact` | Existing PHP contact endpoint |
-| Legal insights hub | `/insights` | Firm-approved editorial content; no unreviewed legal advice |
+| Legal insights hub and articles | `/insights` and `/insights/[slug]` | Six firm-information articles based on existing website content; future legal updates require advocate approval |
 | Office profiles | `/offices/[slug]` | `offices` |
 | Conversion analytics | Client-side event layer | Consent-aware, privacy-minimised events; provider selected later |
 | SEO | Final phase | Metadata, canonical URLs, sitemap, robots, structured data and local search content |

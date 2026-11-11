@@ -47,12 +47,29 @@ import Footer from "@/components/layout/footer";
 import Header from "@/components/layout/header";
 import BackToTopButton from "@/components/layout/back-to-top-button";
 import { MessageCircle } from "lucide-react";
-import { buildWhatsAppUrl } from "@/lib/firm-data";
+import { buildWhatsAppUrl, firmContact, offices } from "@/lib/firm-data";
 
 export default function Home() {
   const whatsappUrl = buildWhatsAppUrl({ source: "homepage" });
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://kanyij-advocates.co.ke").replace(/\/$/, "");
+  const firmStructuredData = {
+    "@context": "https://schema.org",
+    "@type": ["Organization", "LegalService"],
+    name: firmContact.name,
+    url: siteUrl,
+    email: firmContact.email,
+    telephone: firmContact.phoneDisplay,
+    areaServed: { "@type": "Country", name: "Kenya" },
+    address: offices.map((office) => ({
+      "@type": "PostalAddress",
+      streetAddress: office.address,
+      addressLocality: office.city,
+      addressCountry: "KE",
+    })),
+  };
   return (
     <div className="relative flex min-h-screen flex-col bg-background">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(firmStructuredData).replace(/</g, "\\u003c") }} />
       <LenisProvider />
       <CursorSystem />
       <DepthBackground />
