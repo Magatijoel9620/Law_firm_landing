@@ -53,7 +53,7 @@ To get a local copy up and running, follow these simple steps.
    ```sh
    cp .env.example .env.local
    ```
-   Set `NEXT_PUBLIC_SITE_URL` to the canonical production origin. Add `NEXT_PUBLIC_GA_MEASUREMENT_ID` only if the firm has approved and configured a GA4 property. Analytics remains disabled until a visitor opts in.
+   Set `NEXT_PUBLIC_SITE_URL` to the canonical production origin. The supplied GTM container (`GTM-NDH9BMFV`) is used by default; optionally override it with `NEXT_PUBLIC_GTM_ID`. Configure the firm's GA4 Measurement ID inside Google Tag Manager. Analytics remains disabled until a visitor opts in.
 
 4. **Run the development server:**
    ```sh

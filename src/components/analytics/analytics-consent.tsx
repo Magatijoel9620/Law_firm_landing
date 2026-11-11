@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 const CONSENT_KEY = "kanyi-analytics-consent";
-const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+const containerId = process.env.NEXT_PUBLIC_GTM_ID || "GTM-NDH9BMFV";
 
 type ConsentChoice = "granted" | "denied";
 
@@ -16,14 +16,22 @@ declare global {
   }
 }
 
-function enableGoogleAnalytics() {
-  if (!measurementId || typeof window === "undefined") return;
+function enableGoogleTagManager() {
+  if (!containerId || typeof window === "undefined") return;
 
+  // The container is injected only after opt-in. Keep the data layer compatible
+  // with GTM custom-event triggers and Google Consent Mode.
   window.dataLayer = window.dataLayer || [];
   const gtag = window.gtag ?? ((...args: unknown[]) => {
     window.dataLayer?.push(args);
   });
   window.gtag = gtag;
+  gtag("consent", "default", {
+    analytics_storage: "denied",
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+  });
   gtag("consent", "update", {
     analytics_storage: "granted",
     ad_storage: "denied",
@@ -31,16 +39,14 @@ function enableGoogleAnalytics() {
     ad_personalization: "denied",
   });
 
-  if (!document.querySelector(`script[data-kanyi-ga="${measurementId}"]`)) {
+  if (!document.querySelector(`script[data-kanyi-gtm="${containerId}"]`)) {
+    window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
     const script = document.createElement("script");
     script.async = true;
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-    script.dataset.kanyiGa = measurementId;
+    script.src = `https://www.googletagmanager.com/gtm.js?id=${containerId}`;
+    script.dataset.kanyiGtm = containerId;
     document.head.appendChild(script);
   }
-
-  gtag("js", new Date());
-  gtag("config", measurementId, { anonymize_ip: true });
 }
 
 export default function AnalyticsConsent() {
@@ -49,7 +55,7 @@ export default function AnalyticsConsent() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    if (!measurementId) return;
+    if (!containerId) return;
     try {
       const saved = window.localStorage.getItem(CONSENT_KEY);
       if (saved === "granted" || saved === "denied") {
@@ -70,7 +76,7 @@ export default function AnalyticsConsent() {
   useEffect(() => {
     window.__kanyiAnalyticsConsent = choice === "granted";
     if (choice === "granted") {
-      enableGoogleAnalytics();
+      enableGoogleTagManager();
     } else if (choice === "denied" && window.gtag) {
       window.gtag("consent", "update", {
         analytics_storage: "denied",
@@ -81,7 +87,7 @@ export default function AnalyticsConsent() {
     }
   }, [choice]);
 
-  if (!measurementId || !loaded) return null;
+  if (!containerId || !loaded) return null;
 
   function choose(nextChoice: ConsentChoice) {
     try {

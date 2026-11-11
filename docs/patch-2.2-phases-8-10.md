@@ -13,7 +13,7 @@
 
 ## Phase 8 — Analytics
 
-- Added optional GA4 support using `NEXT_PUBLIC_GA_MEASUREMENT_ID`.
+- Initially added optional direct GA4 support using `NEXT_PUBLIC_GA_MEASUREMENT_ID`; this is superseded by the GTM integration described in the current release-readiness document.
 - Added an opt-in/opt-out privacy panel and persistent privacy settings control.
 - GA4 script loading and conversion event forwarding are blocked until the visitor opts in.
 - Rejection updates consent to denied; the visitor can reopen settings and change their choice.

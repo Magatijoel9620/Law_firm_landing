@@ -2,11 +2,12 @@
 
 ## Phase 8 — Conversion analytics
 
-The site now has a privacy-minimised conversion event adapter and an optional Google Analytics 4 integration. Events are not emitted to analytics providers unless the visitor has opted in.
+The site now has a privacy-minimised conversion event adapter and an optional Google Tag Manager integration. The GTM container is not loaded and events are not emitted to analytics providers unless the visitor has opted in.
 
-- Events cover service-finder use, service enquiry clicks, consultation starts/submissions, general enquiry submissions, WhatsApp, phone, email and office directions.
+- Events cover service-finder use, service enquiry clicks, consultation starts/submissions, general enquiry submissions, WhatsApp, phone, email and office directions: `service_finder_used`, `service_detail_enquiry_clicked`, `consultation_form_started`, `consultation_request_submitted`, `general_enquiry_submitted`, `whatsapp_clicked`, `phone_clicked`, `email_clicked` and `office_directions_clicked`.
 - Only allowlisted `service`, `office` and `source` context is forwarded. Form names, email addresses, phone numbers, message contents and documents are never sent to analytics.
-- GA4 is loaded only when `NEXT_PUBLIC_GA_MEASUREMENT_ID` is configured and a visitor opts in through the privacy choices panel. Optional analytics is off by default; rejection is persisted locally.
+- GTM is loaded only when `NEXT_PUBLIC_GTM_ID` is configured (defaulting to the firm's supplied `GTM-NDH9BMFV` container) and a visitor opts in through the privacy choices panel. Optional analytics is off by default; rejection is persisted locally.
+- Conversion events are pushed to the GTM data layer as named custom events. Configure matching Custom Event triggers and GA4 Event tags in the GTM workspace; do not add a second hardcoded GA4 script to the site.
 - The privacy settings control remains available after a choice so a visitor can change it.
 
 ### Deployment configuration
@@ -14,9 +15,9 @@ The site now has a privacy-minimised conversion event adapter and an optional Go
 Copy `.env.example` into the deployment environment and set:
 
 - `NEXT_PUBLIC_SITE_URL`: the canonical website origin, without a trailing slash. The configured fallback is `https://kanyij-advocates.co.ke`, matching the origin already allowed by the supplied PHP contact handler.
-- `NEXT_PUBLIC_GA_MEASUREMENT_ID`: optional GA4 measurement ID in the form `G-XXXXXXXXXX`. Leave blank until the firm creates/selects its property.
+- `NEXT_PUBLIC_GTM_ID`: GTM web-container ID. The supplied value `GTM-NDH9BMFV` is already the application fallback; set this variable only if the firm later changes containers.
 
-A live GA4 test cannot be completed until the firm supplies its measurement ID and the updated build is deployed. The firm should approve the privacy wording and privacy/cookie notice before enabling analytics.
+In Google Tag Manager, publish a Google tag configured with the firm's GA4 Measurement ID (normally `G-XXXXXXXXXX`), then create GA4 Event tags for the site's custom event names. The GA4 Measurement ID belongs in GTM, not in the website environment. The firm should approve the privacy wording and privacy/cookie notice before enabling analytics.
 
 ## Phase 9 — SEO
 
@@ -46,7 +47,7 @@ Still required on the release machine / deployed environment:
 3. Check the scroll-linked hero/history effects, navigation, anchors and route transitions with normal and reduced-motion preferences.
 4. Check desktop, tablet and mobile layouts, keyboard navigation, focus visibility and screen-reader labels.
 5. Submit test general and consultation enquiries against the deployed PHP endpoint; verify email delivery, validation, honeypot behaviour and CORS from the production origin.
-6. If GA4 is configured, test both reject and allow choices, verify no analytics request before opt-in, and confirm event names/context in GA4 DebugView.
+6. Test both reject and allow choices, verify no GTM request before opt-in, then use Tag Assistant and GA4 DebugView to confirm the GTM container, event names and allowlisted context. Verify that rejecting after previously allowing sends a consent update to denied.
 7. Check all links, office map destinations, metadata, sitemap, robots and structured data on the deployed domain.
 8. Obtain firm approval for historical wording, service copy, advocate biographies, office details, Insights wording and privacy/consent text.
 9. Restore or regenerate the 2026 firm profile PDF. The supplied source archives did not include the PDF currently referenced by the homepage.

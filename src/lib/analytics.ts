@@ -13,6 +13,7 @@ export type ConversionContext = Record<string, string>;
 
 declare global {
   interface Window {
+    dataLayer?: unknown[];
     gtag?: (...args: unknown[]) => void;
     __kanyiAnalyticsConsent?: boolean;
   }
@@ -44,5 +45,6 @@ export function trackConversionEvent(
     }),
   );
 
-  window.gtag?.("event", eventName, safeContext);
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: eventName, ...safeContext });
 }
