@@ -1,0 +1,5 @@
+/* Welcome dialog: restore the native pointer because the site-wide custom cursor is layered beneath this modal. */
+.first-visit-welcome a,
+.first-visit-welcome button {
+  cursor: pointer !important;
+}

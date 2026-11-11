@@ -4,7 +4,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { Alegreya, PT_Sans } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import ConversionTracker from '@/components/analytics/conversion-tracker';
-import AnalyticsConsent from '@/components/analytics/analytics-consent';
+import FirstVisitWelcome from '@/components/sections/first-visit-welcome';
 
 const alegreya = Alegreya({
   subsets: ['latin'],
@@ -64,7 +64,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <ConversionTracker />
-          <AnalyticsConsent />
+          <FirstVisitWelcome />
           {children}
           <Toaster />
         </ThemeProvider>
