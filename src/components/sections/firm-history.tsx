@@ -342,7 +342,7 @@ function TimelineJourney() {
         ))}
       </ol>
       <p className="mt-10 pl-11 text-xs leading-6 text-muted-foreground md:pl-0 md:text-center">
-        A short account of the firm's published history. The dates and details shown reflect information supplied by the firm.
+        A short account of the firm's published history.
       </p>
     </div>
   );
