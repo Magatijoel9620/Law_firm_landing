@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 // Firm Profile 2026 — source of truth for the current firm-level figures.
 const stats = [
   { value: "40+", label: "Years Serving Clients", icon: Clock3 },
-  { value: "3", label: "Offices Across the Coast", icon: Building2 },
+  { value: "3", label: "Office Locations", icon: Building2 },
   { value: "5", label: "Advocates & Lawyers", icon: Scale },
   { value: "20", label: "Professional Support Staff", icon: Users },
   { value: "11+", label: "Practice Areas", icon: BriefcaseBusiness },

@@ -21,7 +21,7 @@ const pathways = [
   },
   {
     title: "Find our offices",
-    description: "Connect with our teams in Mombasa, Kilifi and Malindi.",
+    description: "View our office locations in Mombasa, Kilifi and Malindi.",
     href: "/offices/mombasa",
     icon: Building2,
   },
@@ -101,8 +101,8 @@ export default function FirstVisitWelcome() {
             id="first-visit-welcome-description"
             className="mt-2 max-w-xl text-xs leading-5 text-muted-foreground sm:mt-3 sm:text-base sm:leading-7"
           >
-            Experienced legal counsel. Trusted relationships. Serving clients
-            across Kenya&apos;s coast since 1985.
+            Experienced legal counsel. Trusted relationships. Serving clients across
+            Kenya, with roots in Mombasa since 1985.
           </p>
         </div>
 

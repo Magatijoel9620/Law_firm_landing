@@ -58,11 +58,11 @@ const timelineEvents = [
   },
   {
     year: "Today",
-    title: "A coastal practice serving a broad client base",
+    title: "A Kenyan practice serving a broad client base",
     category: "The firm today",
     icon: Building2,
     description:
-      "Today, Kanyi J. & Company Advocates serves corporate and private clients from its offices in Mombasa, Kilifi and Malindi. Its work spans the firm's published practice areas, with experience, transparency and integrity at the heart of its stated approach.",
+      "Today, Kanyi J. & Company Advocates serves corporate and private clients across Kenya from its established base in Mombasa and branch offices in Kilifi and Malindi. Its work spans the firm's published practice areas, with experience, transparency and integrity at the heart of its stated approach.",
     detail:
       "The firm continues to bring its people, experience and range of services together to assist clients with different legal needs. Explore the practice areas and office pages to learn more about the services and locations currently listed on this website.",
   },
@@ -70,7 +70,7 @@ const timelineEvents = [
 
 const highlights = [
   "40+ years serving clients",
-  "3 offices across the coast",
+  "3 offices in Mombasa, Kilifi & Malindi",
   "5 advocates & lawyers",
   "20 professional support staff",
   "11+ practice areas",
@@ -135,16 +135,16 @@ export default function FirmHistory() {
               Our story
             </p>
             <h2 className="font-headline text-4xl font-bold leading-tight tracking-tight text-primary sm:text-6xl">
-              Four decades on the Kenyan coast.
+              A Kenyan legal practice with roots in Mombasa.
             </h2>
             <p className="mt-6 text-lg font-semibold leading-8 text-primary/80">
-              A coastal law practice with roots in Mombasa and a history dating back to 1985.
+              Established in 1985, with a longstanding presence in Mombasa and a commitment to serving clients across Kenya.
             </p>
             <p className="mt-5 leading-8 text-muted-foreground">
               Based in Mombasa, with branch offices in Kilifi and Malindi, Kanyi J. &amp;
-              Company Advocates serves both corporate and private clients. The
-              practice traces its roots to 1985 and has developed across the
-              Kenyan coast over the years.
+              Company Advocates serves corporate and private clients across
+              Kenya. The practice traces its roots to 1985 and continues to
+              build on that established foundation.
             </p>
             <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-2">
               {highlights.map((item) => (
@@ -301,7 +301,7 @@ export default function FirmHistory() {
             Our legacy.
           </h2>
           <p className="mt-5 text-lg leading-8 text-muted-foreground">
-            A history that began in Mombasa and continues to shape the way we serve clients across the coast.
+            A history that began in Mombasa and continues to shape the way we serve clients across Kenya.
           </p>
         </Reveal>
         <TimelineJourney />

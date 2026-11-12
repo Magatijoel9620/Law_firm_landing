@@ -61,7 +61,7 @@ export default function Hero() {
               <span className="text-accent">Company Advocates.</span>
             </h1>
             <p className="mt-8 max-w-2xl text-base leading-7 text-white/70 sm:text-xl sm:leading-8">
-              A Mombasa-based law firm serving corporate and private clients.
+              A Kenyan law firm serving corporate and private clients across the country, with its roots in Mombasa.
               Advocates, Commissioners for Oaths &amp; Notaries Public.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-3">

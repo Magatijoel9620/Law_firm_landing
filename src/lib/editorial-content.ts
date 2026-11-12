@@ -17,18 +17,18 @@ export type InsightArticle = {
 
 export const insightArticles: InsightArticle[] = [
   {
-    slug: "a-legal-practice-rooted-on-the-coast",
+    slug: "a-kenyan-legal-practice-rooted-in-mombasa",
     category: "Our story",
     eyebrow: "Since 1985 · Mombasa, Kenya",
-    title: "A legal practice rooted on the Kenyan coast",
-    excerpt: "The firm's story began in Mombasa in 1985. Today, its work reaches clients in Mombasa, Kilifi and Malindi.",
+    title: "A Kenyan legal practice rooted in Mombasa",
+    excerpt: "The firm's story began in Mombasa in 1985. Today, it serves corporate and private clients across Kenya.",
     readTime: "3 min read",
     icon: "history",
     paragraphs: [
       "The story of Kanyi J. & Company Advocates begins in Mombasa in 1985, when the practice was established as J. V. Juma & Company Advocates by Mr. J. V. Juma.",
       "In 1996, following Mr. J. V. Juma's elevation to the High Court, Mr. Joseph Karanja Kanyi took over the practice and it became Kanyi J. & Company Advocates.",
       "Over the years, the practice developed a presence beyond Mombasa, with offices in Kilifi and Malindi. Its work also expanded to include specialised maritime law services, reflecting the importance of shipping and port activity to the region.",
-      "Today, the firm describes itself as a full-service coastal legal practice serving corporate and private clients. Its stated approach is grounded in experience, transparency and integrity."
+      "Today, Kanyi J. & Company Advocates serves corporate and private clients across Kenya, drawing on its longstanding presence in Mombasa and its branch offices in Kilifi and Malindi. Its stated approach is grounded in experience, transparency and integrity."
     ],
     closing: "Our history is part of the context behind the firm. If you would like to learn more about the people, services or offices, explore the rest of this website or get in touch with the team."
   },
@@ -66,10 +66,10 @@ export const insightArticles: InsightArticle[] = [
     closing: "You can read the advocate profiles on the homepage. For an enquiry, describe the kind of assistance you are seeking and the team can review the appropriate next step."
   },
   {
-    slug: "one-firm-three-coastal-offices",
+    slug: "one-firm-three-office-locations",
     category: "Our offices",
     eyebrow: "Mombasa · Kilifi · Malindi",
-    title: "One firm, three coastal offices",
+    title: "One firm, three office locations",
     excerpt: "Kanyi J. & Company Advocates has offices in Mombasa, Kilifi and Malindi. Here is where to find each one.",
     readTime: "2 min read",
     icon: "coast",
@@ -106,7 +106,7 @@ export const insightArticles: InsightArticle[] = [
     readTime: "3 min read",
     icon: "approach",
     paragraphs: [
-      "Kanyi's website describes a practice shaped by four decades of legal work on the Kenyan coast. Its firm history highlights experience, transparency and integrity as the values that have guided its work with corporate and private clients.",
+      "Kanyi's website describes a practice established in Mombasa in 1985 and serving corporate and private clients across Kenya. Its firm history highlights experience, transparency and integrity as the values that have guided its work.",
       "The firm's published profile also points to litigation, negotiation, mediation and arbitration capability, supported by legal research and practical strategy. These are presented as important parts of the firm's approach to advocacy and dispute resolution.",
       "No two matters are exactly alike. The relevant work and next steps depend on the facts, so general information on this website should not be treated as advice about your own circumstances. Contact the firm to discuss the matter."
     ],

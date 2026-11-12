@@ -54,7 +54,7 @@ export default function Footer() {
             </h3>
 
             <p className="max-w-md text-sm leading-7 text-primary-foreground/70">
-              A full-service coastal law firm serving corporate and private clients across Mombasa, Kilifi and Malindi since 1985.
+              A Kenyan law firm serving corporate and private clients across the country since 1985, with its head office in Mombasa and branch offices in Kilifi and Malindi.
             </p>
 
             <div className="mt-6 flex items-center gap-3">

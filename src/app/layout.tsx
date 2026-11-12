@@ -22,7 +22,7 @@ const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://kanyij-advocates.c
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Kanyi J. & Company Advocates | Mombasa, Kenya",
+    default: "Kanyi J. & Company Advocates | Legal Services Across Kenya",
     template: "%s | Kanyi J. & Company Advocates",
   },
   alternates: { canonical: "/" },
@@ -30,14 +30,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_KE",
     siteName: "Kanyi J. & Company Advocates",
-    title: "Kanyi J. & Company Advocates | Mombasa, Kenya",
-    description: "A Kenyan coastal law firm serving corporate and private clients from Mombasa, Kilifi and Malindi since 1985.",
+    title: "Kanyi J. & Company Advocates | Legal Services Across Kenya",
+    description: "A Kenyan law firm based in Mombasa, serving corporate and private clients across Kenya since 1985.",
     url: siteUrl,
   },
   twitter: {
     card: "summary",
     title: "Kanyi J. & Company Advocates",
-    description: "A Kenyan coastal law firm serving clients from Mombasa, Kilifi and Malindi since 1985.",
+    description: "A Kenyan law firm based in Mombasa, serving clients across Kenya since 1985.",
   },
       icons: {
     icon: "/favicon-v2.ico",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   },
 
   description:
-    "Kanyi J. & Company Advocates is a Kenyan coastal law firm serving corporate and private clients from Mombasa, Kilifi and Malindi since 1985.",
+    "Kanyi J. & Company Advocates is a Kenyan law firm based in Mombasa, serving corporate and private clients across Kenya since 1985.",
   
 };
 

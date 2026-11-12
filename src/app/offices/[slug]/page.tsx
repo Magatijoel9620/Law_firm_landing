@@ -42,7 +42,7 @@ const officeIntroductions: Record<string, string> = {
   mombasa:
     "Our head office is based in Kizingo, Mombasa. This is where the firm's story began, and it remains the central point of contact for clients seeking to reach the practice.",
   kilifi:
-    "Our Kilifi branch gives clients another point of contact along the coast. You will find the published office address and contact details below to help you plan your visit or make an enquiry.",
+    "Our Kilifi branch provides another office location for clients and visitors. You will find the published office address and contact details below to help you plan your visit or make an enquiry.",
   malindi:
     "Our Malindi branch is located on Vasco da Gama Road, next to Malindi Law Courts. Use the directions and contact details below when planning to reach the office.",
 };
@@ -203,7 +203,7 @@ export default async function OfficePage({ params }: OfficePageProps) {
                 More ways to reach us
               </p>
               <h2 className="mt-3 font-headline text-2xl font-semibold text-primary sm:text-3xl">
-                Our other coastal offices
+                Our other office locations
               </h2>
             </Reveal>
             <div className="grid gap-4 md:grid-cols-2">

@@ -9,7 +9,7 @@ import { Reveal } from "@/components/interactive/InteractionLayer";
 
 export const metadata: Metadata = {
   title: "Firm Insights & Information",
-  description: "Learn about Kanyi J. & Company Advocates, its services, people and offices across Mombasa, Kilifi and Malindi.",
+  description: "Learn about Kanyi J. & Company Advocates, its services, people and office locations in Mombasa, Kilifi and Malindi.",
   alternates: { canonical: "/insights" },
 };
 
@@ -26,7 +26,7 @@ export default function InsightsPage() {
             <Reveal className="max-w-3xl">
               <span className="inline-flex items-center gap-2 rounded-full border border-accent/25 bg-accent/10 px-4 py-2 text-xs font-semibold uppercase tracking-[.2em] text-accent"><BookOpen className="h-4 w-4" /> Knowledge & perspectives</span>
               <h1 className="mt-7 font-headline text-4xl font-bold tracking-tight text-primary sm:text-6xl">A little more about the law firm behind the name.</h1>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">Explore our story, the services we offer, the people behind the practice and the offices serving Kenya's coast. These pages bring together information already published by the firm.</p>
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">Explore our story, the services we offer, the people behind the practice and the firm's offices in Mombasa, Kilifi and Malindi. These pages bring together information already published by the firm.</p>
               <p className="mt-5 text-sm leading-7 text-muted-foreground">This is a firm information resource, not a source of legal advice. Articles about legal developments and guidance will be added after review and approval by the firm's advocates.</p>
             </Reveal>
           </div>
