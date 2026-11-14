@@ -1,8 +1,16 @@
+
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Building2, CalendarDays, Scale, X } from "lucide-react";
+import {
+  ArrowRight,
+  Building2,
+  CalendarDays,
+  Scale,
+  X,
+} from "lucide-react";
 
 const WELCOME_KEY = "kanyi-first-visit-welcome-dismissed";
 
@@ -56,9 +64,11 @@ export default function FirstVisitWelcome() {
 
   useEffect(() => {
     if (!visible) return;
+
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") dismiss();
     }
+
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [visible]);
@@ -88,21 +98,43 @@ export default function FirstVisitWelcome() {
           >
             <X className="h-4 w-4" />
           </button>
-          <p className="mb-2 pr-10 text-[9px] font-semibold uppercase tracking-[0.18em] text-accent sm:mb-3 sm:text-xs">
-            Kanyi J. &amp; Company Advocates
-          </p>
+
+          {/* Firm logo and identity */}
+          <div className="mb-3 flex items-center gap-3 pr-10 sm:mb-5 sm:gap-4">
+            <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-lg bg-white sm:h-16 sm:w-16">
+              <Image
+                src="/images/kj.png"
+                alt="Kanyi J. & Company Advocates logo"
+                fill
+                priority
+                sizes="(max-width: 640px) 44px, 64px"
+                className="object-contain"
+              />
+            </div>
+
+            <div className="min-w-0">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-primary sm:text-sm sm:tracking-[0.16em]">
+                Kanyi J. &amp; Company
+              </p>
+              <p className="mt-0.5 text-[9px] font-medium uppercase tracking-[0.18em] text-muted-foreground sm:text-[11px]">
+                Advocates
+              </p>
+            </div>
+          </div>
+
           <h2
             id="first-visit-welcome-title"
             className="max-w-xl font-headline text-xl font-semibold leading-tight tracking-tight text-primary sm:text-3xl md:text-4xl"
           >
             Welcome. How may we assist you?
           </h2>
+
           <p
             id="first-visit-welcome-description"
             className="mt-2 max-w-xl text-xs leading-5 text-muted-foreground sm:mt-3 sm:text-base sm:leading-7"
           >
-            Experienced legal counsel. Trusted relationships. Serving clients across
-            Kenya, with roots in Mombasa since 1985.
+            Experienced legal counsel. Trusted relationships. Serving clients
+            across Kenya, with roots in Mombasa since 1985.
           </p>
         </div>
 
@@ -110,6 +142,7 @@ export default function FirstVisitWelcome() {
           <p className="mb-1 px-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground sm:mb-3 sm:text-xs">
             Find your way around
           </p>
+
           <nav aria-label="Welcome quick links" className="grid gap-1.5 sm:gap-3">
             {pathways.map(({ title, description, href, icon: Icon }) => (
               <Link
@@ -121,6 +154,7 @@ export default function FirstVisitWelcome() {
                 <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-muted text-primary sm:h-11 sm:w-11">
                   <Icon className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
                 </span>
+
                 <span className="min-w-0 flex-1">
                   <span className="block text-[13px] font-semibold text-primary sm:text-base">
                     {title}
@@ -129,6 +163,7 @@ export default function FirstVisitWelcome() {
                     {description}
                   </span>
                 </span>
+
                 <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-accent" />
               </Link>
             ))}
@@ -141,8 +176,10 @@ export default function FirstVisitWelcome() {
             onClick={dismiss}
             className="!cursor-pointer inline-flex min-h-10 w-full items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:w-auto sm:min-w-44"
           >
-            Continue to website <ArrowRight className="h-4 w-4" />
+            Continue to website
+            <ArrowRight className="h-4 w-4" />
           </button>
+
           <p className="mt-1.5 text-center text-[10px] text-muted-foreground sm:hidden">
             You can explore the website at any time.
           </p>
@@ -151,3 +188,4 @@ export default function FirstVisitWelcome() {
     </div>
   );
 }
+
