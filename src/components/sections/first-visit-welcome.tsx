@@ -169,13 +169,13 @@ export default function FirstVisitWelcome() {
             >
               Welcome. How may we assist you?
             </h2>
-            <p
-              id="first-visit-welcome-description"
-              className="mt-4 max-w-xl text-sm leading-6 text-muted-foreground sm:mt-5 sm:text-[15px] sm:leading-7"
-            >
-              Experienced legal counsel. Trusted relationships. Serving clients
-              across Kenya, with roots in Mombasa since 1985.
-            </p>
+           <p
+  id="first-visit-welcome-description"
+  className="mt-4 max-w-xl text-sm leading-6 text-muted-foreground sm:mt-5 sm:text-[15px] sm:leading-7"
+>
+  Experienced legal counsel · Trusted relationships · Serving clients
+  across Kenya, with roots in Mombasa since 1985.
+</p>
 
             <div className="mt-7 flex flex-col items-start gap-4 sm:mt-9">
               <Link
